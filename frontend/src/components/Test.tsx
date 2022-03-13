@@ -1,9 +1,12 @@
 import React from 'react'
-
+import MiddleEarthMap from './MiddleEarthMap'
 function Test() {
   return (
-    <div>Test!</div>
+    <div>
+        <p>Test!</p>
+     <MiddleEarthMap/>
+    </div>
   )
 }
 
-export default Test
+export default Test;
