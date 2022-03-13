@@ -1,10 +1,11 @@
 import './App.css';
+import Navbar from './components/Navbar';
 import Test from './components/Test';
 
 function App() {
   return (
     <div className="App">
-      <h1>Middle Earth Map</h1>
+      <Navbar/>
       <Test/>
     </div>
   );
