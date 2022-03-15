@@ -1,6 +1,6 @@
 # project middle-earth
 
-## Frontend Starten:
+## Setup for Frontend:
 1. Install Node.js & NPM
 2. type "cd frontend"
 3. type "npm install" ( Sollte den node_modules folder erstellen)
