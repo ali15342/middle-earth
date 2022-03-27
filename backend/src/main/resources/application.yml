@@ -1,0 +1,8 @@
+app:
+    url: http://localhost:8080/
+
+jwt:
+    secret: MTIzNDU2Nzg=Bronze5
+
+dozer:
+    mapping-files: classpath:mapping.xml
