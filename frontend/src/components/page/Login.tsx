@@ -1,8 +1,8 @@
-import React from 'react'
+import Navbar from '../Navbar/Navbar'
 
 function Login() {
   return (
-    <div>Login</div>
+    <div><Navbar/></div>
   )
 }
 

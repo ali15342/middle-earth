@@ -11,12 +11,16 @@
 button {
     border: none;
     background: none;
+}
+
+a {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color:aliceblue;
     margin: 20px;
     font-size: 1.4rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: none;
 }
 
-button:hover {
+a:hover {
     color: yellow;
 }

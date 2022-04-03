@@ -1,11 +1,10 @@
-import MiddleEarthMap from "../Map"
 import Navbar from "../Navbar/Navbar"
 
 function Home() {
   return (
     <div>
       <Navbar/>
-      <MiddleEarthMap/>
+      <p>Landing Page Content</p>
     </div>
   )
 }

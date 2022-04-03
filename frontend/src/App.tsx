@@ -7,6 +7,10 @@ import {
 } from "react-router-dom";
 import About from './components/page/About';
 import Home from './components/page/Home';
+import Characters from './components/page/Characters';
+import MapPage from './components/page/MapPage';
+import Error404 from './components/page/Error404';
+import Login from './components/page/Login';
 
 function App() {
   return (
@@ -14,6 +18,10 @@ function App() {
     <Routes>
       <Route path="/" element={<Home/>}></Route>
       <Route path="/about" element={<About/>}></Route>
+      <Route path="/characters" element={<Characters/>}></Route>
+      <Route path="/map" element={<MapPage/>}></Route>
+      <Route path="/login" element={<Login/>}></Route>
+      <Route path="*" element={<Error404/>}></Route>
     </Routes>
 </Router>
   );
