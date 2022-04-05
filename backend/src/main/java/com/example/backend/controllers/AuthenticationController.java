@@ -23,7 +23,7 @@ import javax.validation.Valid;
 @RestController
 @Validated
 @CrossOrigin
-@RequestMapping("/api/authentication")
+@RequestMapping("api/authentication")
 public class AuthenticationController {
     private final UserService userService;
     private final JwtService jwtService;
@@ -65,6 +65,11 @@ public class AuthenticationController {
 
         jwtService.blacklistJwt(token);
 
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping(value="/hello")
+    public ResponseEntity<HttpStatus> helloUser(){
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

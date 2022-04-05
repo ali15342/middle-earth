@@ -25,8 +25,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    public WebSecurityConfig() {
-    }
+    public WebSecurityConfig() {}
 
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
@@ -46,15 +45,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity security) {
-        security.ignoring().antMatchers("/api/authentication/**");
+        security.ignoring().antMatchers("/api/authentication/**", "/api/authenticationtest/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //Don't use cookie based authentication, because we use a jwt => SessionCreationPolicy.STATELESS
-        http.cors().and().csrf().disable()
+        http.csrf().and().cors().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().anyRequest().authenticated();
+                .authorizeRequests().anyRequest().authenticated(); //CORS Disablen
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }

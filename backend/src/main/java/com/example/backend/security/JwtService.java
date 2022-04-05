@@ -8,8 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-
-import java.security.SignatureException;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -37,7 +35,7 @@ public class JwtService {
                 .setIssuedAt(new Date())
                 .addClaims(new HashMap<String, Object>() {{
                     put("user_id", userPrincipal.getId());
-                    put("role", role.toArray()[0]);
+                    //put("role", role.toArray()[0]);
                     put("username", userPrincipal.getUsername());
                 }})
                 .setExpiration(new Date((new Date()).getTime() + jwtExpiration * 1000))
@@ -84,7 +82,10 @@ public class JwtService {
             }
 
             return true;
-        } catch (MalformedJwtException e) {
+        }catch (SignatureException e) {
+            logger.error("Invalid JWT signature: {}", e.getMessage());
+        }
+        catch (MalformedJwtException e) {
             logger.error("Invalid JWT token: {}", e.getMessage());
         } catch (ExpiredJwtException e) {
             logger.error("JWT token is expired: {}", e.getMessage());
