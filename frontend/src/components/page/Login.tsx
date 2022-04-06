@@ -1,18 +1,19 @@
 import Navbar from '../Navbar/Navbar'
-import React, { useState, useRef } from "react";
+import { useState, useRef} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Box } from "rebass";
 import TextField from "@material-ui/core/TextField";
-
+import '../../css/App.css'
 function Login() {
 
-  const [inputFields, setInputFields] = useState([
-    { username:String = "", password:String = "" },
-  ]);
+  interface inputFieldType {username: String,
+  password:String }
 
-  const currentState: Object = useRef();
-  currentState.current: String[] = inputFields;
+  const [inputFields, setInputFields] = useState<inputFieldType>();
+
+  const currentState = useRef<any>();
+  currentState.current= inputFields;
 
   const headers = {
     "Content-Type": "application/json",
@@ -87,7 +88,7 @@ function Login() {
               <br></br>
               <Link
                 to="../LearningPath"
-                className="btn btn-primary middleContent"
+                className="btn btn-primary middleContent App"
                 style={{ width: "300px" }}
                 onClick={submit}
               >
@@ -99,15 +100,12 @@ function Login() {
           <p>or</p>
           <br />
           <div>
-            <Link to="../Register" className="btn btn-primary">
+            <Link to="../Register" className="btn btn-primary App">
               Register
             </Link>
           </div>
           <br></br>
           <div style={{ marginBottom: "20px" }}>
-            <Link to="../ForgotPassword" className="btn btn-outline-primary">
-              Forgot Password ?
-            </Link>
           </div>
       
         </div>

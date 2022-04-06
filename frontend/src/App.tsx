@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import About from './components/page/About';
 import Home from './components/page/Home';
-import Characters from './components/page/Characters';
+import Characters from './components/page/Characters/Characters';
 import MapPage from './components/page/MapPage';
 import Error404 from './components/page/Error404';
 import Login from './components/page/Login';
