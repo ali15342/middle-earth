@@ -11,6 +11,7 @@ import Characters from './components/page/Characters/Characters';
 import MapPage from './components/page/MapPage';
 import Error404 from './components/page/Error404';
 import Login from './components/page/Login';
+// import Register from './components/page/Register';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path="/characters" element={<Characters/>}></Route>
       <Route path="/map" element={<MapPage/>}></Route>
       <Route path="/login" element={<Login/>}></Route>
+      {/* <Route path="/register" element={<Register/>}></Route> */}
       <Route path="*" element={<Error404/>}></Route>
     </Routes>
 </Router>

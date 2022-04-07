@@ -20,6 +20,12 @@ function Login() {
     mode: "no-cors",
   };
   const navigate = useNavigate();
+  
+  // const handleChangeInput = (event:any) => {
+  //   const values:any = [...inputFields];
+  //   values[0][event.target.name] = event.target.value;
+  //   setInputFields(values);
+  // };
 
   const submit = () => {
     axios
@@ -33,10 +39,14 @@ function Login() {
       .then((response) => {
         localStorage.setItem("jwt", response.data.jwt);
         console.log("success");
-        navigate("../LearningPath");
+        // navigate("../LearningPath");
+        console.log(currentState.current[0]);
+        console.log(inputFields);
       })
       .catch((error) => {
         console.log(error);
+        console.log(currentState.current[0]);
+        console.log(inputFields);
       
       });
   };
@@ -71,7 +81,7 @@ function Login() {
                 label="username"
                 style={{ width: "300px", marginBottom: "30px" }}
                 rowsMax={1}
-
+                // onChange={(event) => handleChangeInput(event)}
                 className={"middleContent"}
               />
 
@@ -81,13 +91,14 @@ function Login() {
                 type="password"
                 style={{ width: "300px", marginBottom: "15px" }}
                 rowsMax={1}
+                // onChange={(event) => handleChangeInput(event)}
                 className={"middleContent"}
               />
 
               <br></br>
               <br></br>
               <Link
-                to="../LearningPath"
+                to="#"
                 className="btn btn-primary middleContent App"
                 style={{ width: "300px" }}
                 onClick={submit}

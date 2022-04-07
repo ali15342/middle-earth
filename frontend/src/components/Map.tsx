@@ -18,6 +18,7 @@ function Map() {
     </Popup>
   </Marker>
 </MapContainer>
+<img src={mapImage}></img>
     </div>
   )
 }
