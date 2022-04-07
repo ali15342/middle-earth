@@ -6,10 +6,11 @@ import { Box } from "rebass";
 import TextField from "@material-ui/core/TextField";
 import '../../css/App.css'
 
-function Login() {
+function Registration() {
 
   const [formValue, setformValue] = React.useState({
     username: '',
+    email: '',
     password: ''
   });
 
@@ -18,8 +19,9 @@ function Login() {
   const submitHandler = async() => {
     const loginFormData = new FormData();
     loginFormData.append("username", formValue.username);
+    loginFormData.append("email", formValue.email);
     loginFormData.append("password", formValue.password);
-    let backendUrl = "http://localhost:8080/api/authentication/login";
+    let backendUrl = "http://localhost:8080/api/authentication/register";
 
     let object:any = {};
     loginFormData.forEach(function(value:any, key:any){
@@ -36,8 +38,7 @@ function Login() {
         mode: "no-cors",
         AccessControlAllowOrigin: "*"},
       });
-      localStorage.setItem("jwt", response.data.jwt)
-      navigate('../map')
+      navigate('../login')
     } catch(error) {
       console.log(error)
     }
@@ -73,7 +74,7 @@ function Login() {
         <div className="App">
           <form onSubmit={submitHandler}>
             <div className="form">
-              <h1 className="boldText">Login</h1>
+              <h1 className="boldText">Create an account</h1>
               <TextField
                 name="username"
                 label="username"
@@ -82,6 +83,19 @@ function Login() {
                 value={formValue.username}
                 onChange={handleChange}
                 className={"middleContent"}
+                required
+              />
+              <br/>
+              <TextField
+                name="email"
+                label="email"
+                type="email"
+                style={{ width: "300px", marginBottom: "30px" }}
+                rowsMax={1}
+                value={formValue.email}
+                onChange={handleChange}
+                className={"middleContent"}
+                required
               />
               <br/>
               <TextField
@@ -93,6 +107,7 @@ function Login() {
                 value={formValue.password}
                 onChange={handleChange}
                 className={"middleContent"}
+                required
               />
 
               <br></br>
@@ -103,7 +118,7 @@ function Login() {
                 style={{ width: "300px" }}
                 onClick={submitHandler}
               >
-                Login
+                Register
               </Link>
             </div>
           </form>
@@ -111,8 +126,8 @@ function Login() {
           <p>or</p>
           <br />
           <div>
-            <Link to="../register" className="btn btn-primary App">
-              Register
+            <Link to="../login" className="btn btn-primary App">
+              Login
             </Link>
           </div>
           <br></br>
@@ -132,4 +147,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Registration
