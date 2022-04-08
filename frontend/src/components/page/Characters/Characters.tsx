@@ -5,9 +5,13 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import {api_url} from '../../../services/backendservice'
 import legolas from '../../../img/characters/legolas.svg'
-function Characters() {
+import frodo from '../../../img/characters/frodo.svg'
+import galadriel from '../../../img/characters/galadriel.svg'
+import gandalf from '../../../img/characters/gandalf.svg'
+import CharacterButton from './CharacterButton';
 
-  const [currentCharacterIndex, setCurrentCharacterIndex] = React.useState(0);
+
+function Characters() {
 
   const [characters, setCharacters] = React.useState({
     "docs": [
@@ -66,12 +70,15 @@ function Characters() {
           <h1>The world of middle earth!</h1>
           <p>Here's some cool characters</p>
           Info About Characters, using The One API
+          
+          <CharacterButton image={"gandalf"}></CharacterButton>
+
          <img src={legolas} className="icon" style={{"width":"100px"}} onClick={() => getCharacter(api_url, "Legolas")}></img>
+         <img src={frodo} className="icon" style={{"width":"100px"}} onClick={() => getCharacter(api_url, "Frodo Baggins")}></img>
+         <img src={gandalf} className="icon" style={{"width":"100px"}} onClick={() => getCharacter(api_url, "Gandalf")}></img>
 
          <h1>Name:</h1>
-          <Character name={characters.docs[currentCharacterIndex].name
-         
-          }/>
+          <Character name={characters.docs[0].name}/>
         
         </div>
         </div>
