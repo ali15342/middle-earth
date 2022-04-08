@@ -6,7 +6,10 @@ interface props {
 
 function Character(props:props) {
   return (
-    <div>Hello my name is {props.name}</div>
+    <div>
+      <h1>Name:</h1>
+      Hello my name is {props.name}
+      </div>
   )
 }
 

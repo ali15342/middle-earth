@@ -1,13 +1,9 @@
 import Navbar from '../../Navbar/Navbar'
 import Character from './Character'
 import './characters.css'
-import React, { useState, useEffect } from 'react';
+import React, {useEffect} from 'react';
 import axios from "axios";
 import {api_url} from '../../../services/backendservice'
-import legolas from '../../../img/characters/legolas.svg'
-import frodo from '../../../img/characters/frodo.svg'
-import galadriel from '../../../img/characters/galadriel.svg'
-import gandalf from '../../../img/characters/gandalf.svg'
 import CharacterButton from './CharacterButton';
 
 
@@ -62,23 +58,28 @@ function Characters() {
     console.log(characters)
   },[])
 
-
   return (
     <div>
         <Navbar/>
         <div className="characterContent">
           <h1>The world of middle earth!</h1>
-          <p>Here's some cool characters</p>
-          Info About Characters, using The One API
-          
-          <CharacterButton image={"gandalf"}></CharacterButton>
+          <p>Here's some cool characters.</p>
+         
+          <div>
+              <button onClick={() => getCharacter(api_url, "Gandalf")}>
+                <CharacterButton image={"gandalf"}></CharacterButton>
+              </button>
+            
+              <button onClick={() => getCharacter(api_url, "Frodo Baggins")}>
+                <CharacterButton image={"frodo"}></CharacterButton>
+              </button>
 
-         <img src={legolas} className="icon" style={{"width":"100px"}} onClick={() => getCharacter(api_url, "Legolas")}></img>
-         <img src={frodo} className="icon" style={{"width":"100px"}} onClick={() => getCharacter(api_url, "Frodo Baggins")}></img>
-         <img src={gandalf} className="icon" style={{"width":"100px"}} onClick={() => getCharacter(api_url, "Gandalf")}></img>
+              <button onClick={() => getCharacter(api_url, "Legolas")}>
+                <CharacterButton image={"legolas"}></CharacterButton>
+              </button>
+          </div>
 
-         <h1>Name:</h1>
-          <Character name={characters.docs[0].name}/>
+        <Character name={characters.docs[0].name}/>
         
         </div>
         </div>
