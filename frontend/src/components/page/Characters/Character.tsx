@@ -1,8 +1,11 @@
 import React from 'react'
 
-function Character() {
+interface props {
+  name: String;
+}
+function Character(props:props) {
   return (
-    <div>Character 1</div>
+    <div>Hello my name is {props.name}</div>
   )
 }
 

@@ -4,3 +4,7 @@
     margin: auto;
     padding: 20px;
 }
+
+.icon:hover {
+    filter: grayscale(70%) sepia(70%);
+}
