@@ -1,11 +1,10 @@
 import Navbar from '../../Navbar/Navbar'
 import Character from './Character'
 import './characters.css'
-import React, {useEffect} from 'react';
+import React from 'react';
 import axios from "axios";
 import {api_url} from '../../../services/backendservice'
 import CharacterButton from './CharacterButton';
-
 
 function Characters() {
 
@@ -40,7 +39,7 @@ function Characters() {
            };
 
 
-  const getCharacter = (api_url:string, character:string) => {
+  const getCharacter = (character:string) => {
     axios.get(api_url + character, {headers: theOneAPIHeaders})
     .then(response => {
       setCharacter(response.data)
@@ -50,35 +49,31 @@ function Characters() {
     })
   }
 
-  useEffect(() => {
-    getCharacter(api_url, "Gandalf")
-  },[])
-
   return (
     <div>
         <Navbar/>
         <div className="characterContent">
-          <h1>The world of middle earth!</h1>
-          <p>Here's some cool characters.</p>
+          <h1>Characters</h1>
+          <p>Click on one of the icons to get information about a member of the fellowship!</p>
          
           <div>
-              <button onClick={() => getCharacter(api_url, "Gandalf")}>
+              <button onClick={() => getCharacter("Gandalf")}>
                 <CharacterButton image={"gandalf"}></CharacterButton>
               </button>
             
-              <button onClick={() => getCharacter(api_url, "Frodo Baggins")}>
+              <button onClick={() => getCharacter("Frodo Baggins")}>
                 <CharacterButton image={"frodo"}></CharacterButton>
               </button>
 
-              <button onClick={() => getCharacter(api_url, "Legolas")}>
+              <button onClick={() => getCharacter("Legolas")}>
                 <CharacterButton image={"legolas"}></CharacterButton>
               </button>
 
-              <button onClick={() => getCharacter(api_url, "Galadriel")}>
+              <button onClick={() => getCharacter("Galadriel")}>
                 <CharacterButton image={"galadriel"}></CharacterButton>
               </button>
 
-              <button onClick={() => getCharacter(api_url, "Gollum")}>
+              <button onClick={() => getCharacter("Gollum")}>
                 <CharacterButton image={"gollum"}></CharacterButton>
               </button>
 

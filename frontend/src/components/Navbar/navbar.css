@@ -31,6 +31,6 @@ a:hover {
 /* This is how u do responsive css, use media queries */
 @media only screen and (max-width: 600px) {
     .content {
-      background-color: lightblue;
+      background-color: rgb(7, 36, 46);
     }
   }

@@ -1,10 +1,19 @@
 .characterContent {
     width: 80%;
-    background-color: rgb(248, 248, 212);
+    background-color: rgb(248, 247, 245);
     margin: auto;
-    padding: 20px;
+    margin-top: 40px;
+    padding: 40px;
+    text-align: center;
 }
 
 .icon:hover {
     filter: grayscale(70%) sepia(70%);
 }
+
+/* This is how u do responsive css, use media queries */
+@media only screen and (max-width: 750px) {
+    .characterContent {
+      max-width: 60%;
+    }
+  }
