@@ -9,7 +9,7 @@ import CharacterButton from './CharacterButton';
 
 function Characters() {
 
-  const [characters, setCharacters] = React.useState({
+  const [character, setCharacter] = React.useState({
     "docs": [
       {
           "_id": "",
@@ -43,7 +43,7 @@ function Characters() {
   const getCharacter = (api_url:string, character:string) => {
     axios.get(api_url + character, {headers: theOneAPIHeaders})
     .then(response => {
-      setCharacters(response.data)
+      setCharacter(response.data)
     })
     .catch(error => {
       return(console.log(error))
@@ -52,10 +52,6 @@ function Characters() {
 
   useEffect(() => {
     getCharacter(api_url, "Gandalf")
-  },[])
-  
-  useEffect(() => {
-    console.log(characters)
   },[])
 
   return (
@@ -77,9 +73,18 @@ function Characters() {
               <button onClick={() => getCharacter(api_url, "Legolas")}>
                 <CharacterButton image={"legolas"}></CharacterButton>
               </button>
+
+              <button onClick={() => getCharacter(api_url, "Galadriel")}>
+                <CharacterButton image={"galadriel"}></CharacterButton>
+              </button>
+
+              <button onClick={() => getCharacter(api_url, "Gollum")}>
+                <CharacterButton image={"gollum"}></CharacterButton>
+              </button>
+
           </div>
 
-        <Character name={characters.docs[0].name}/>
+        <Character info={character.docs[0]}/>
         
         </div>
         </div>
