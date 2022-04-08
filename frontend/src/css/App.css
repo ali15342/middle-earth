@@ -2,11 +2,31 @@
   text-align: center;
   color: black;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  
 }
 
 .text-center {
   margin-top: 18%;
+  margin-bottom: 18%;
   text-align: center;
+}
+
+.demo-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.demo-bg {
+  opacity: 0.1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+}
+
+.demo-content {
+  position: relative;
 }
 
 .App-logo {
@@ -14,6 +34,10 @@
   pointer-events: none;
 }
 
+.background-img {
+  background-image: url("../img/mapv0.5.jpg");
+  opacity: 0.6;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
