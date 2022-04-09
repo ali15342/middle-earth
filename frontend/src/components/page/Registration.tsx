@@ -94,7 +94,7 @@ function Registration() {
               />
               <br/>
               <br/>
-              <input type={"submit"}/>
+              <input className={"btn btn-primary App"} type={"submit"} value={"Register"}/>
             </div>
           </form>
           <br />

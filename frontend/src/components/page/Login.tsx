@@ -83,7 +83,7 @@ function Login() {
               />
               <br/>
               <br/>
-              <input type={"submit"}/>
+              <input className={"btn btn-primary App"} type={"submit"} value={"Login"}/>
             </div>
           </form>
           <br />
