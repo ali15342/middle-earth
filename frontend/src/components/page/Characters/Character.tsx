@@ -9,7 +9,7 @@ function Character(props:props) {
       <p>{props.info.birth !== "" ? "Birth: " + props.info.birth : ""}</p>
       <p>{props.info.death !== "" ? "Death: " + props.info.death : ""}</p>
       <p>{props.info.race !== "" ? "Race: " + props.info.race : ""}</p>
-      <p>{props.info.hair !== "" ? "Hair:" + props.info.hair : ""}</p>
+      <p>{props.info.hair !== "" ? "Hair: " + props.info.hair : ""}</p>
       <p>{props.info.gender !== "" ? "Gender: " + props.info.gender : ""}</p>
       </div>
   )

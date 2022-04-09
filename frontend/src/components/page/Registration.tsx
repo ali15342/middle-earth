@@ -1,54 +1,46 @@
 import Navbar from '../Navbar/Navbar'
 import React from 'react'
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { Box } from "rebass";
 import TextField from "@material-ui/core/TextField";
 import '../../css/App.css'
+import {showErrorToast, showToast} from "../../helper/show-toast";
+import {userApi} from "../../services/api/userApi";
+import {SubmitHandler, useForm} from "react-hook-form";
+
+interface Registration{
+  username: string,
+  email: string,
+  password: string
+}
+
+type RegistrationType = {
+  username: string
+  email: string
+  password: string
+}
 
 function Registration() {
-
-  const [formValue, setformValue] = React.useState({
-    username: '',
-    email: '',
-    password: ''
-  });
-
+  const defaultUserApi = userApi()
   const navigate = useNavigate();
-  
-  const submitHandler = async() => {
-    const loginFormData = new FormData();
-    loginFormData.append("username", formValue.username);
-    loginFormData.append("email", formValue.email);
-    loginFormData.append("password", formValue.password);
-    let backendUrl = "http://localhost:8080/api/authentication/register";
 
-    let object:any = {};
-    loginFormData.forEach(function(value:any, key:any){
-      object[key] = value;
-    });
-    var loginJsonData = JSON.stringify(object);
-    
-    try {
-      const response = await axios({
-        method: "post",
-        url: backendUrl, 
-        data: loginJsonData,
-        headers: { "Content-Type": "application/json",
-        mode: "no-cors",
-        AccessControlAllowOrigin: "*"},
-      });
-      navigate('../login')
-    } catch(error) {
-      console.log(error)
-    }
+  const { register, handleSubmit } = useForm<RegistrationType>();
+  const onSubmit: SubmitHandler<RegistrationType> = data => {
+    submitHandler(data);
   }
 
-  const handleChange = (event:any) => {
-    setformValue({
-      ...formValue,
-      [event.target.name]: event.target.value
-    });
+  const submitHandler = async(data:RegistrationType) => {
+    const registrationData = data
+
+    await defaultUserApi.registration(registrationData as Registration)
+        .then((response=>{
+          showToast("Success");
+          navigate('../login')
+        }))
+        .catch(exception=>{
+          showErrorToast("error")
+          console.log(exception)
+        })
   }
 
   return (
@@ -61,10 +53,10 @@ function Registration() {
       }}
     >
       <Box
-        sx={{
-          p: 0,
-        }}
-      ></Box>
+    sx={{
+      p: 0,
+    }}
+    />
       <Box
         sx={{
           flex: "1 1 auto",
@@ -72,54 +64,37 @@ function Registration() {
         }}
       >
         <div className="App">
-          <form onSubmit={submitHandler}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form">
               <h1 className="boldText">Create an account</h1>
-              <TextField
-                name="username"
+              <TextField {...register("username", { required: true })}
                 label="username"
                 style={{ width: "300px", marginBottom: "30px" }}
                 rowsMax={1}
-                value={formValue.username}
-                onChange={handleChange}
                 className={"middleContent"}
                 required
               />
               <br/>
-              <TextField
-                name="email"
+              <TextField {...register("email", { required: true })}
                 label="email"
                 type="email"
                 style={{ width: "300px", marginBottom: "30px" }}
                 rowsMax={1}
-                value={formValue.email}
-                onChange={handleChange}
                 className={"middleContent"}
                 required
               />
               <br/>
-              <TextField
-                name="password"
+              <TextField {...register("password", { required: true })}
                 label="password"
                 type="password"
                 style={{ width: "300px", marginBottom: "15px" }}
                 rowsMax={1}
-                value={formValue.password}
-                onChange={handleChange}
                 className={"middleContent"}
                 required
               />
-
-              <br></br>
-              <br></br>
-              <Link
-                to="#"
-                className="btn btn-primary middleContent App"
-                style={{ width: "300px" }}
-                onClick={submitHandler}
-              >
-                Register
-              </Link>
+              <br/>
+              <br/>
+              <input type={"submit"}/>
             </div>
           </form>
           <br />
@@ -130,10 +105,9 @@ function Registration() {
               Login
             </Link>
           </div>
-          <br></br>
+          <br/>
           <div style={{ marginBottom: "20px" }}>
           </div>
-      
         </div>
       </Box>
       <Box

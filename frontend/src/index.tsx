@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './css/index.css';
+import './css/index.sss';
 import App from './App';
+import {ToastContainer} from "react-toastify";
 
 ReactDOM.render(
   <React.StrictMode>

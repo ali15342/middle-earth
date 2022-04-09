@@ -1,0 +1,28 @@
+import { toast } from "react-toastify"
+
+export function showToast(text: string) {
+    toast(text, {
+        type: "success",
+        closeButton: false,
+        delay: 0,
+        autoClose: 5000
+    })
+}
+
+export function showWarningToast(text: string) {
+    toast(text, {
+        type: "warning",
+        closeButton: false,
+        delay: 0,
+        autoClose: 5000
+    })
+}
+
+export function showErrorToast(text: string) {
+    toast(text, {
+        type: "error",
+        closeButton: false,
+        delay: 0,
+        autoClose: 5000
+    })
+}

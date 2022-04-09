@@ -4,8 +4,8 @@ function Error404() {
   return (
     <div>
         <Navbar/>
-        Error 404 Page Not Found
-        </div>
+        Error 404 (ToDo: add gif of gandalf here)
+    </div>
   )
 }
 

@@ -1,53 +1,46 @@
 import Navbar from '../Navbar/Navbar'
 import React from 'react'
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { Box } from "rebass";
 import TextField from "@material-ui/core/TextField";
 import '../../css/App.css'
+import { userApi } from '../../services/api/userApi';
+import { showToast, showWarningToast, showErrorToast } from '../../helper/show-toast';
+import {SubmitHandler, useForm} from "react-hook-form"
+import {ToastContainer} from "react-toastify";
+
+interface Login {
+  username: string
+  password: string
+}
+
+type LoginType = {
+  username: string
+  password: string
+}
 
 function Login() {
-
-  const [formValue, setformValue] = React.useState({
-    username: '',
-    password: ''
-  });
-
+  const defaultUserApi = userApi()
   const navigate = useNavigate();
-  
-  const submitHandler = async() => {
-    const loginFormData = new FormData();
-    loginFormData.append("username", formValue.username);
-    loginFormData.append("password", formValue.password);
-    let backendUrl = "http://localhost:8080/api/authentication/login";
 
-    let object:any = {};
-    loginFormData.forEach(function(value:any, key:any){
-      object[key] = value;
-    });
-    var loginJsonData = JSON.stringify(object);
-    
-    try {
-      const response = await axios({
-        method: "post",
-        url: backendUrl, 
-        data: loginJsonData,
-        headers: { "Content-Type": "application/json",
-        mode: "no-cors",
-        AccessControlAllowOrigin: "*"},
-      });
-      localStorage.setItem("jwt", response.data.jwt)
-      navigate('../map')
-    } catch(error) {
-      console.log(error)
-    }
+  const { register, handleSubmit } = useForm<LoginType>();
+  const onSubmit: SubmitHandler<LoginType> = data => {
+    submitHandler(data);
   }
 
-  const handleChange = (event:any) => {
-    setformValue({
-      ...formValue,
-      [event.target.name]: event.target.value
-    });
+  const submitHandler = async(data:LoginType) => {
+    const loginData = data
+
+    await defaultUserApi.authenticate(loginData as Login)
+    .then((response=>{
+      showToast("Success");
+      localStorage.setItem("jwt", response.data.jwt)
+      navigate('../map')
+    }))
+    .catch(exception=>{
+      showErrorToast("error")
+      console.log(exception)
+    })
   }
 
   return (
@@ -60,10 +53,10 @@ function Login() {
       }}
     >
       <Box
-        sx={{
-          p: 0,
-        }}
-      ></Box>
+    sx={{
+      p: 0,
+    }}
+    />
       <Box
         sx={{
           flex: "1 1 auto",
@@ -71,40 +64,26 @@ function Login() {
         }}
       >
         <div className="App">
-          <form onSubmit={submitHandler}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form">
               <h1 className="boldText">Login</h1>
-              <TextField
-                name="username"
+              <TextField {...register("username", { required: true })}
                 label="username"
                 style={{ width: "300px", marginBottom: "30px" }}
                 rowsMax={1}
-                value={formValue.username}
-                onChange={handleChange}
                 className={"middleContent"}
               />
               <br/>
-              <TextField
-                name="password"
+              <TextField {...register("password", { required: true })}
                 label="password"
                 type="password"
                 style={{ width: "300px", marginBottom: "15px" }}
                 rowsMax={1}
-                value={formValue.password}
-                onChange={handleChange}
                 className={"middleContent"}
               />
-
-              <br></br>
-              <br></br>
-              <Link
-                to="#"
-                className="btn btn-primary middleContent App"
-                style={{ width: "300px" }}
-                onClick={submitHandler}
-              >
-                Login
-              </Link>
+              <br/>
+              <br/>
+              <input type={"submit"}/>
             </div>
           </form>
           <br />
@@ -115,10 +94,9 @@ function Login() {
               Register
             </Link>
           </div>
-          <br></br>
+          <br/>
           <div style={{ marginBottom: "20px" }}>
           </div>
-      
         </div>
       </Box>
       <Box
@@ -128,6 +106,7 @@ function Login() {
       >
       </Box>
     </Box>
+      <ToastContainer/>
     </div>
   )
 }
