@@ -9,6 +9,7 @@ function Navbar() {
         <Link className="navbar-brand boldText" to="/">Home</Link>
         <Link className="navbar-brand boldText" to="/about">About</Link>
         <Link className="navbar-brand boldText" to="/login">Login</Link>
+        <Link className="navbar-brand boldText" to="/profile">Profile</Link>
       </div>
   )
 }
