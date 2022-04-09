@@ -1,6 +1,6 @@
 import axios, {AxiosResponse} from 'axios';
-import Login from '../../components/page/Login';
-import Registration from "../../components/page/Registration";
+import Login from '../../components/page/Authentication/Login';
+import Registration from "../../components/page/Authentication/Registration";
 
 const {REACT_APP_BASE_URL} = process.env;
 

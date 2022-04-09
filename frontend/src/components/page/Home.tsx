@@ -1,6 +1,6 @@
 import Navbar from "../Navbar/Navbar"
 import mapImage from '../../img/mapv0.5.jpg'
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 function Home() {
   return (
     <div>

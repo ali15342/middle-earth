@@ -3,7 +3,7 @@ import Character from './Character'
 import './characters.css'
 import React from 'react';
 import axios from "axios";
-import {api_url} from '../../../services/backendservice'
+import {api_url} from '../../../services/api/backendservice'
 import CharacterButton from './CharacterButton';
 
 function Characters() {
@@ -31,7 +31,7 @@ function Characters() {
   "pages": 1
   });
 
-  var theOneAPIHeaders = {
+  let theOneAPIHeaders = {
     "Content-Type": "application/json",
       mode: "no-cors",
      "Access-Control-Allow-Origin": "*",
@@ -58,23 +58,23 @@ function Characters() {
          
           <div>
               <button onClick={() => getCharacter("Gandalf")}>
-                <CharacterButton image={"gandalf"}></CharacterButton>
+                <CharacterButton image={"gandalf"}/>
               </button>
             
               <button onClick={() => getCharacter("Frodo Baggins")}>
-                <CharacterButton image={"frodo"}></CharacterButton>
+                <CharacterButton image={"frodo"}/>
               </button>
 
               <button onClick={() => getCharacter("Legolas")}>
-                <CharacterButton image={"legolas"}></CharacterButton>
+                <CharacterButton image={"legolas"}/>
               </button>
 
               <button onClick={() => getCharacter("Galadriel")}>
-                <CharacterButton image={"galadriel"}></CharacterButton>
+                <CharacterButton image={"galadriel"}/>
               </button>
 
               <button onClick={() => getCharacter("Gollum")}>
-                <CharacterButton image={"gollum"}></CharacterButton>
+                <CharacterButton image={"gollum"}/>
               </button>
 
           </div>

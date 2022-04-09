@@ -1,12 +1,7 @@
 import Navbar from '../Navbar/Navbar'
 import React from 'react'
-import { Link, useNavigate } from "react-router-dom";
 import { Box } from "rebass";
-import TextField from "@material-ui/core/TextField";
 import '../../css/App.css'
-import {showErrorToast, showToast} from "../../helper/show-toast";
-import {userApi} from "../../services/api/userApi";
-import {SubmitHandler, useForm} from "react-hook-form";
 import jwt from 'jwt-decode'
 import jwtDecode from 'jwt-decode';
 
@@ -47,7 +42,7 @@ function Profile() {
           <h2 className="">Middle Earth</h2>
           <h1 className="">Nerd Society</h1>
           <hr />
-          <p>{username.username}</p>
+          <p>Willkommen {username.username}</p>
           
 
           <div style={{ marginBottom: "20px" }}>

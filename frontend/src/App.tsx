@@ -10,8 +10,8 @@ import Home from './components/page/Home';
 import Characters from './components/page/Characters/Characters';
 import MapPage from './components/page/MapPage';
 import Error404 from './components/page/Error404';
-import Login from './components/page/Login';
-import Register from './components/page/Registration';
+import Login from './components/page/Authentication/Login';
+import Register from './components/page/Authentication/Registration';
 import Profile from './components/page/Profile';
 
 function App() {

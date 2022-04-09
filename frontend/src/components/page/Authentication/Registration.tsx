@@ -1,11 +1,11 @@
-import Navbar from '../Navbar/Navbar'
+import Navbar from '../../Navbar/Navbar'
 import React from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { Box } from "rebass";
 import TextField from "@material-ui/core/TextField";
-import '../../css/App.css'
-import {showErrorToast, showToast} from "../../helper/show-toast";
-import {userApi} from "../../services/api/userApi";
+import '../../../css/App.css'
+import {showErrorToast, showToast} from "../../../helper/show-toast";
+import {userApi} from "../../../services/api/userApi";
 import {SubmitHandler, useForm} from "react-hook-form";
 
 interface Registration{
