@@ -1,11 +1,42 @@
-.content {
-    display: flex;
-    justify-content: space-around;
-    background-color: rgb(7, 36, 46);
-    height: 75px;
-    margin: 0;
+:root {
+    --orange: rgb(219, 159, 90);
+    --blue: rgb(7, 36, 46);
+    --lightBlue: rgb(11, 52, 63);
+    --white: #f0f8ff;
+}
+
+*{
     padding: 0;
+    margin:0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.content {
+    background-image: linear-gradient(var(--blue), var(--lightBlue));
+    height: 80px;
     width: 100%;
+}
+
+.logo {
+ font-family: 'MedievalSharp', cursive;
+ color: var(--white);
+ font-size: 35px;
+ line-height: 80px;
+ padding: 0 5%;
+ font-weight: bold;   
+}
+
+ul {
+    float: right;
+    margin-right: 20px;
+}
+
+ul li {
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
 }
 
 button {
@@ -15,19 +46,66 @@ button {
 
 a {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color:aliceblue;
-    margin: 20px;
+    color:var(--white);
     font-size: 1.4rem;
+    text-align: center;
     text-decoration: none;
 }
 
-a:hover {
-    color: rgb(212, 139, 54);
+.hamburger {
+    color: var(--white);
+    position: absolute;
+    float: right;
+    right: 3%;
+    top:2.8%;
+    font-size: 35px;
+    
+}
+
+a.active, a:hover {
+    color: var(--orange);
+    transition: .5s;
+}
+
+.contentMobile {
+    display: none;
 }
 
 /* This is how u do responsive css, use media queries */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1100px) {
     .content {
-      background-color: rgb(7, 36, 46);
+      background-color: var(--blue);
+      display: none;
+    
+    }
+
+    .contentMobile {
+        background-image: linear-gradient(var(--blue), var(--lightBlue));
+        display:block;
+        text-align: center;
+        margin-bottom: -17px;
+    }
+
+    .contentMobileActive {
+        position:absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .contentMobile ul {
+        float:none;
+        
+    }
+
+    .center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contentMobile ul li {
+        display: flex;
+
     }
   }

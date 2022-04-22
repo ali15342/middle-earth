@@ -5,18 +5,11 @@ function Home() {
   return (
     <div>
       <Navbar/>
-      <div className="demo-wrap">
-  <img
-    className="demo-bg"
-    src={mapImage}
-    alt=""
-  />
-  <div className="demo-content text-center">
-   <h1>Welcome to Middle Earth Maps</h1>
-        <p>Explore the world of middle earth with our map.</p>
-        <Link to="../register" className="btn btn-primary App">Register</Link>
-  </div>
-</div>
+      <div className="text-center bg-image">
+          <h1>Welcome to Middle Earth Maps</h1>
+                <p>Explore the world of middle earth with our map.</p>
+                <Link to="../register" className="btn btn-primary App">Register</Link>
+          </div>
     </div>
   )
 }
