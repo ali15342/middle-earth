@@ -1,10 +1,12 @@
+import './characters.css'
+
 interface props {
   info: any;
 }
 
 function Character(props:props) {
   return (
-    <div>
+    <div className="topMargin">
       <h2>{props.info.name !== "" ? props.info.name : ""}</h2>
       <p>{props.info.birth !== "" ? "Birth: " + props.info.birth : ""}</p>
       <p>{props.info.death !== "" ? "Death: " + props.info.death : ""}</p>
