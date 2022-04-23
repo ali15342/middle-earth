@@ -10,11 +10,16 @@
 
 h1 {
   text-align: center;
-  padding-top: 13%;
+  top:50%;
+}
 
+.marginUp {
+  margin-top: -40px;
 }
 
 .text-center {
+  display: block;
+  padding-top: 100px;
   text-align: center;
 }
 
@@ -23,7 +28,7 @@ h1 {
   background-size: cover;
   background-repeat: no-repeat;
   background-color: hwb(208 94% 0% / 0.259);
- height: 100vh;
+  height: 100vh;
 }
 
 .demo-wrap {
@@ -48,4 +53,10 @@ h1 {
     margin: 5% 10%;
   }
   
+}
+
+@media only screen and (max-width: 280px) {
+  h1 {
+    font-size: 25px;
+  }
 }

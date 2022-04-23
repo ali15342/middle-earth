@@ -53,6 +53,7 @@ function Characters() {
     <div>
         <Navbar/>
         <div className="characterContent">
+          <div>
           <h1>Characters</h1>
           <p>Click on one of the icons to get information about a member of the fellowship!</p>
          
@@ -76,9 +77,10 @@ function Characters() {
               <button onClick={() => getCharacter("Gollum")}>
                 <CharacterButton image={"gollum"}/>
               </button>
-
           </div>
 
+          </div>
+          
         <Character info={character.docs[0]}/>
         
         </div>

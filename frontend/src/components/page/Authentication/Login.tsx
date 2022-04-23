@@ -1,7 +1,6 @@
 import Navbar from '../../Navbar/Navbar'
 import React from 'react'
 import { Link, useNavigate } from "react-router-dom";
-import { Box } from "rebass";
 import TextField from "@material-ui/core/TextField";
 import '../../../css/App.css'
 import { userApi } from '../../../services/api/userApi';
@@ -45,27 +44,9 @@ function Login() {
 
   return (
     <div><Navbar/>
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-      }}
-    >
-      <Box
-    sx={{
-      p: 0,
-    }}
-    />
-      <Box
-        sx={{
-          flex: "1 1 auto",
-          p: 0,
-        }}
-      >
-        <div className="App">
+   <div className="App">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form">
+            <div>
               <h1 className="boldText">Login</h1>
               <TextField {...register("username", { required: true })}
                 label="username"
@@ -98,14 +79,6 @@ function Login() {
           <div style={{ marginBottom: "20px" }}>
           </div>
         </div>
-      </Box>
-      <Box
-        sx={{
-          p: 0,
-        }}
-      >
-      </Box>
-    </Box>
       <ToastContainer/>
     </div>
   )

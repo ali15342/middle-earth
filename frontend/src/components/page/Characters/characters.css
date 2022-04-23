@@ -1,27 +1,36 @@
 .characterContent {
     width: 80%;
-    background-color: rgb(243, 242, 237);
     margin: auto;
-    margin-top: 40px;
-    padding: 40px;
     text-align: center;
+    padding: 40px;
+    margin-bottom: 40px;
 }
 
 h1, h2 {
     color: rgb(7, 36, 46);
+    padding: 20px;
 }
 
 .icon:hover {
     filter: grayscale(70%) sepia(70%);
 }
 
-.topMargin {
-    margin-top: 50px;
-}
+@media only screen and (max-width: 1100px) {
+    .characterContent {
+      top:40px;
+      margin-top: -40px;
+    }
+  }
 
 /* This is how u do responsive css, use media queries */
 @media only screen and (max-width: 750px) {
     .characterContent {
       max-width: 60%;
+    }
+  }
+
+@media only screen and (max-width: 700px) {
+    .characterContent {
+      max-width: 80%;
     }
   }
