@@ -5,7 +5,7 @@ import { Box } from "rebass";
 import TextField from "@material-ui/core/TextField";
 import '../../../css/App.css'
 import {showErrorToast, showToast} from "../../../helper/show-toast";
-import {userApi} from "../../../services/api/userApi";
+import {authenticationApi} from "../../../services/api/authenticationApi";
 import {SubmitHandler, useForm} from "react-hook-form";
 
 interface Registration{
@@ -21,7 +21,7 @@ type RegistrationType = {
 }
 
 function Registration() {
-  const defaultUserApi = userApi()
+  const defaultUserApi = authenticationApi()
   const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm<RegistrationType>();

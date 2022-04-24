@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Box } from "rebass";
 import TextField from "@material-ui/core/TextField";
 import '../../../css/App.css'
-import { userApi } from '../../../services/api/userApi';
+import { authenticationApi } from '../../../services/api/authenticationApi';
 import { showToast, showErrorToast } from '../../../helper/show-toast';
 import {SubmitHandler, useForm} from "react-hook-form"
 import {ToastContainer} from "react-toastify";
@@ -20,7 +20,7 @@ type LoginType = {
 }
 
 function Login() {
-  const defaultUserApi = userApi()
+  const defaultUserApi = authenticationApi()
   const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm<LoginType>();
