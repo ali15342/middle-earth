@@ -22,15 +22,20 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email;
 
+    @Column(nullable = false, length = 50)
+    @Enumerated(EnumType.STRING)
+    private Fractions fraction;
+
     @Column(nullable = false)
     private String salt;
 
     @Column(nullable = false)
     private String hash;
 
-    public User(String username, String email, String hash, String salt) {
+    public User(String username, String email, Fractions fraction, String hash, String salt) {
         this.username = username;
         this.email = email;
+        this.fraction = fraction;
         this.hash = hash;
         this.salt = salt;
     }
@@ -78,4 +83,11 @@ public class User {
         this.hash = hash;
     }
 
+    public Fractions getFraction() {
+        return fraction;
+    }
+
+    public void setFraction(Fractions fraction) {
+        this.fraction = fraction;
+    }
 }

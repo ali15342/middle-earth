@@ -20,23 +20,24 @@ public class SpringUserDetails implements UserDetails {
     private Long id;
     private String username;
     private String email;
-    //private Collection<? extends GrantedAuthority> authorities;
+    private Collection<? extends GrantedAuthority> authorities;
 
     @JsonIgnore
     private String password;
 
-    public SpringUserDetails(Long id, String username, String password,
+    public SpringUserDetails(Long id, String username, String email, String password,
                              Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
         this.password = password;
-        //this.authorities = authorities;
+        this.email = email;
+        this.authorities = authorities;
     }
 
     public static SpringUserDetails build(User userAccount) {
-        //GrantedAuthority authorities = new SimpleGrantedAuthority(userAccount.getRole().toString());
+        GrantedAuthority authorities = new SimpleGrantedAuthority(userAccount.getFraction().toString());
         //Collections.singleton(authorities) übergeben
-        return new SpringUserDetails(userAccount.getId(), userAccount.getUsername(), userAccount.getHash(), null);
+        return new SpringUserDetails(userAccount.getId(), userAccount.getUsername(), userAccount.getEmail(), userAccount.getHash(), Collections.singleton(authorities));
     }
 
     public String getEmail() {
@@ -57,7 +58,7 @@ public class SpringUserDetails implements UserDetails {
 
    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null; //return authorities;
+        return authorities;
     }
 
     @Override

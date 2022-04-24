@@ -1,7 +1,10 @@
 package com.example.backend.services;
 
 import com.example.backend.dto.request.LoginRequestDto;
+import com.example.backend.dto.request.UserRequestDto;
 import com.example.backend.dto.response.LoginResponseDto;
+import com.example.backend.dto.response.UserResponseDto;
+import com.example.backend.models.Fractions;
 import com.example.backend.models.User;
 import com.example.backend.repositories.UserRepository;
 import com.example.backend.security.BCryptPasswordHelper;
@@ -52,6 +55,7 @@ public class UserService {
 
         dbUser.setHash(hashedPassword);
         dbUser.setSalt(randomSalt);
+        dbUser.setFraction(Fractions.HOBBIT);
 
         userRepository.save(dbUser);
 
@@ -80,5 +84,33 @@ public class UserService {
         String jwt = this.jwtService.generateJwtToken(authentication);
 
         return new LoginResponseDto(jwt);
+    }
+
+    public UserResponseDto updateUserCredentials(UserRequestDto userRequestDto, String usernameAlt, String jwtToken){
+        User user = userRepository.getUserByUsername(usernameAlt);
+
+        if(user==null){
+            return null;
+        }
+
+        String salt = user.getSalt();
+        String hashedPassword = bCryptPasswordHelper.getSHA512SecurePassword(userRequestDto.getPassword(), salt);
+
+        User dbUser = new User();
+        mapper.map(userRequestDto, dbUser);
+
+        dbUser.setHash(hashedPassword);
+        dbUser.setUsername(userRequestDto.getUsername());
+        dbUser.setEmail(userRequestDto.getEmail());
+        dbUser.setFraction(Fractions.HOBBIT);
+        jwtService.blacklistJwt(jwtToken);
+        userRepository.save(dbUser);
+
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(userRequestDto.getUsername(), userRequestDto.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String jwt = this.jwtService.generateJwtToken(authentication);
+
+        return new UserResponseDto();
     }
 }

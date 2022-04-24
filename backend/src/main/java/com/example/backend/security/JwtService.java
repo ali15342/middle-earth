@@ -35,8 +35,9 @@ public class JwtService {
                 .setIssuedAt(new Date())
                 .addClaims(new HashMap<String, Object>() {{
                     put("user_id", userPrincipal.getId());
-                    //put("role", role.toArray()[0]);
+                    put("role", role.toArray()[0]);
                     put("username", userPrincipal.getUsername());
+                    put("email", userPrincipal.getEmail());
                 }})
                 .setExpiration(new Date((new Date()).getTime() + jwtExpiration * 1000))
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
