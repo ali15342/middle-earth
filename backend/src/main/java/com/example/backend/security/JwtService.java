@@ -1,6 +1,7 @@
 package com.example.backend.security;
 
 import com.example.backend.models.JwtBlackList;
+import com.example.backend.models.User;
 import com.example.backend.repositories.JwtBlackListRepository;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
@@ -38,6 +39,23 @@ public class JwtService {
                     put("role", role.toArray()[0]);
                     put("username", userPrincipal.getUsername());
                     put("email", userPrincipal.getEmail());
+                }})
+                .setExpiration(new Date((new Date()).getTime() + jwtExpiration * 1000))
+                .signWith(SignatureAlgorithm.HS512, jwtSecret)
+                .compact();
+
+        return token;
+    }
+
+    public String generateNewJwtToken(User user) {
+        String token = Jwts.builder()
+                .setSubject((user.getUsername()))
+                .setIssuedAt(new Date())
+                .addClaims(new HashMap<String, Object>() {{
+                    put("user_id", user.getId());
+                    put("role", user.getFraction());
+                    put("username", user.getUsername());
+                    put("email", user.getEmail());
                 }})
                 .setExpiration(new Date((new Date()).getTime() + jwtExpiration * 1000))
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)

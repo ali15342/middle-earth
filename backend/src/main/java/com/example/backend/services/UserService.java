@@ -93,24 +93,30 @@ public class UserService {
             return null;
         }
 
-        String salt = user.getSalt();
-        String hashedPassword = bCryptPasswordHelper.getSHA512SecurePassword(userRequestDto.getPassword(), salt);
+        if(userRequestDto.getPassword() != null) {
+            String hashedPassword = bCryptPasswordHelper.getSHA512SecurePassword(userRequestDto.getPassword(), user.getSalt());
+            user.setHash(hashedPassword);
+        }
+        if(userRequestDto.getUsername() != null){
+            boolean userExists = userRepository.existsByUsername(userRequestDto.getUsername());
+            if(userExists){
+                return null;
+            }
+            user.setUsername(userRequestDto.getUsername());
+        }
+        if(userRequestDto.getEmail() != null){
+            boolean userExists = userRepository.existsByEmail(userRequestDto.getEmail());
+            if(userExists){
+                return null;
+            }
+            user.setEmail(userRequestDto.getEmail());
+        }
 
-        User dbUser = new User();
-        mapper.map(userRequestDto, dbUser);
-
-        dbUser.setHash(hashedPassword);
-        dbUser.setUsername(userRequestDto.getUsername());
-        dbUser.setEmail(userRequestDto.getEmail());
-        dbUser.setFraction(Fractions.HOBBIT);
         jwtService.blacklistJwt(jwtToken);
-        userRepository.save(dbUser);
+        userRepository.save(user);
 
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(userRequestDto.getUsername(), userRequestDto.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = this.jwtService.generateJwtToken(authentication);
+        String jwt = this.jwtService.generateNewJwtToken(user);
 
-        return new UserResponseDto();
+        return new UserResponseDto(jwt);
     }
 }

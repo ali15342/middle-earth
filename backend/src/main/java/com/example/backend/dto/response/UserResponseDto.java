@@ -1,41 +1,20 @@
 package com.example.backend.dto.response;
 
 public class UserResponseDto {
-    private Long id;
+    private String jwt;
 
-    private String username;
-
-    private String email;
-
-    public UserResponseDto(Long id, String username, String email) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
+    public UserResponseDto() {
     }
 
-    public UserResponseDto() {}
-
-    public Long getId() {
-        return id;
+    public UserResponseDto(String jwt) {
+        this.jwt = jwt;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getJwt() {
+        return jwt;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setJwt(String jwt) {
+        this.jwt = jwt;
     }
 }
