@@ -93,18 +93,18 @@ public class UserService {
             return null;
         }
 
-        if(userRequestDto.getPassword() != null) {
+        if(userRequestDto.getPassword() != null && userRequestDto.getPassword() != "") {
             String hashedPassword = bCryptPasswordHelper.getSHA512SecurePassword(userRequestDto.getPassword(), user.getSalt());
             user.setHash(hashedPassword);
         }
-        if(userRequestDto.getUsername() != null){
+        if(userRequestDto.getUsername() != null && userRequestDto.getUsername() != ""){
             boolean userExists = userRepository.existsByUsername(userRequestDto.getUsername());
             if(userExists){
                 return null;
             }
             user.setUsername(userRequestDto.getUsername());
         }
-        if(userRequestDto.getEmail() != null){
+        if(userRequestDto.getEmail() != null && userRequestDto.getEmail() != ""){
             boolean userExists = userRepository.existsByEmail(userRequestDto.getEmail());
             if(userExists){
                 return null;
