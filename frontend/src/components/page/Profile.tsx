@@ -17,7 +17,6 @@ interface Profile {
   username: string
   email: string
   password: string
-  id: string
 }
 
 type UserCredentials = {
