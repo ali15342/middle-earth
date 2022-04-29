@@ -1,11 +1,11 @@
-import Navbar from '../../Navbar/Navbar'
-import React from 'react'
+import Navbar from "../../Navbar/Navbar";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
-import '../../../css/App.css'
-import { authenticationApi } from '../../../services/api/authenticationApi';
-import { showToast, showErrorToast } from '../../../helper/show-toast';
-import {SubmitHandler, useForm} from "react-hook-form"
+import "../../../css/App.css";
+import { authenticationApi } from "../../../services/api/authenticationApi";
+import { showToast, showErrorToast } from "../../../helper/show-toast";
+import {SubmitHandler, useForm} from "react-hook-form";
 import {ToastContainer} from "react-toastify";
 
 interface Login {
@@ -19,28 +19,28 @@ type LoginType = {
 }
 
 function Login() {
-  const defaultUserApi = authenticationApi()
+  const defaultUserApi = authenticationApi();
   const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm<LoginType>();
   const onSubmit: SubmitHandler<LoginType> = data => {
     submitHandler(data);
-  }
+  };
 
   const submitHandler = async(data:LoginType) => {
-    const loginData = data
+    const loginData = data;
 
     await defaultUserApi.authenticate(loginData as Login)
     .then((response=>{
       showToast("Success");
-      localStorage.setItem("jwt", response.data.jwt)
-      navigate('../map')
+      localStorage.setItem("jwt", response.data.jwt);
+      navigate("../map");
     }))
     .catch(exception=>{
-      showErrorToast("error")
-      console.log(exception)
-    })
-  }
+      showErrorToast("error");
+      console.log(exception);
+    });
+  }; 
 
   return (
     <div><Navbar/>
@@ -81,7 +81,7 @@ function Login() {
         </div>
       <ToastContainer/>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

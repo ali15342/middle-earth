@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
 import {authenticationApi} from "../../services/api/authenticationApi";
 
@@ -44,7 +44,7 @@ function NavLinks() {
             </li>
         }
   </ul>
-  )
+  );
 }
 
-export default NavLinks
+export default NavLinks;

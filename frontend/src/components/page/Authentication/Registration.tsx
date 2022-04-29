@@ -1,9 +1,9 @@
-import Navbar from '../../Navbar/Navbar'
-import React from 'react'
+import Navbar from "../../Navbar/Navbar";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Box } from "rebass";
 import TextField from "@material-ui/core/TextField";
-import '../../../css/App.css'
+import "../../../css/App.css";
 import {showErrorToast, showToast} from "../../../helper/show-toast";
 import {authenticationApi} from "../../../services/api/authenticationApi";
 import {SubmitHandler, useForm} from "react-hook-form";
@@ -21,27 +21,27 @@ type RegistrationType = {
 }
 
 function Registration() {
-  const defaultUserApi = authenticationApi()
+  const defaultUserApi = authenticationApi();
   const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm<RegistrationType>();
   const onSubmit: SubmitHandler<RegistrationType> = data => {
     submitHandler(data);
-  }
+  };
 
   const submitHandler = async(data:RegistrationType) => {
-    const registrationData = data
+    const registrationData = data;
 
     await defaultUserApi.registration(registrationData as Registration)
         .then((response=>{
           showToast("Success");
-          navigate('../login')
+          navigate("../login");
         }))
         .catch(exception=>{
-          showErrorToast("error")
-          console.log(exception)
-        })
-  }
+          showErrorToast("error");
+          console.log(exception);
+        });
+  };
 
   return (
     <div><Navbar/>
@@ -118,7 +118,7 @@ function Registration() {
       </Box>
     </Box>
     </div>
-  )
+  );
 }
 
-export default Registration
+export default Registration;

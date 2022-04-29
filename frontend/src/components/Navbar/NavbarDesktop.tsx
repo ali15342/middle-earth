@@ -1,13 +1,14 @@
-import './navbar.css'
-import NavLinks from './NavLinks'
+import "./navbar.css";
+import NavLinks from "./NavLinks";
+import React from "react";
 
 function NavbarDesktop() {
   return (
-    <div className='content'>
+    <div className="content">
     <label className="logo">Middle Earth Maps</label>
     <NavLinks/>
   </div>
-  )
+  );
 }
 
-export default NavbarDesktop
+export default NavbarDesktop;

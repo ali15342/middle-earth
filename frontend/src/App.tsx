@@ -1,18 +1,19 @@
-import '../src/css/App.css';
+import "../src/css/App.css";
+import React from "react";
 
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
-import About from './components/page/About';
-import Home from './components/page/Home';
-import Characters from './components/page/Characters/Characters';
-import MapPage from './components/page/MapPage';
-import Error404 from './components/page/Error404';
-import Login from './components/page/Authentication/Login';
-import Register from './components/page/Authentication/Registration';
-import Profile from './components/page/Profile';
+import About from "./components/page/About";
+import Home from "./components/page/Home";
+import Characters from "./components/page/Characters/Characters";
+import MapPage from "./components/page/MapPage";
+import Error404 from "./components/page/Error404";
+import Login from "./components/page/Authentication/Login";
+import Register from "./components/page/Authentication/Registration";
+import Profile from "./components/page/Profile";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
       <Route path="/profile" element={<Profile/>}></Route>
       <Route path="*" element={<Error404/>}></Route>
     </Routes>
-</Router>
+    </Router>
 
   );
 }

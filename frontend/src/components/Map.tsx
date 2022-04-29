@@ -1,10 +1,8 @@
-import mapImage from '../img/mapv0.5.jpg'
-import { MapContainer, TileLayer, Marker, Popup, ImageOverlay } from 'react-leaflet'
+import mapImage from "../img/mapv0.5.jpg";
+import { MapContainer, TileLayer, Marker, Popup, ImageOverlay } from "react-leaflet";
+import React from "react";
 
 function Map() {
-  
-
-
   return (
     <div>
       <MapContainer center={[51.505, -0.09]} zoom={13}>
@@ -20,7 +18,7 @@ function Map() {
 </MapContainer>
 <img src={mapImage}></img>
     </div>
-  )
+  );
 }
 
-export default Map
+export default Map;

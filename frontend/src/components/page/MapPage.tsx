@@ -1,5 +1,6 @@
-import Map from '../Map'
-import Navbar from '../Navbar/Navbar'
+import Map from "../Map";
+import Navbar from "../Navbar/Navbar";
+import React from "react";
 
 function MapPage() {
   return (
@@ -7,7 +8,7 @@ function MapPage() {
         <Navbar/>
         <Map/>
     </div>
-  )
+  );
 }
 
-export default MapPage
+export default MapPage;

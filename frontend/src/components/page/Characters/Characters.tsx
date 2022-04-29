@@ -1,10 +1,10 @@
-import Navbar from '../../Navbar/Navbar'
-import Character from './Character'
-import './characters.css'
-import React from 'react';
+import Navbar from "../../Navbar/Navbar";
+import Character from "./Character";
+import "./characters.css";
+import React from "react";
 import axios from "axios";
-import {api_url} from '../../../services/backendService'
-import CharacterButton from './CharacterButton';
+import {api_url} from "../../../services/backendService";
+import CharacterButton from "./CharacterButton";
 
 function Characters() {
 
@@ -31,23 +31,23 @@ function Characters() {
   "pages": 1
   });
 
-  let theOneAPIHeaders = {
+  const theOneAPIHeaders = {
     "Content-Type": "application/json",
       mode: "no-cors",
      "Access-Control-Allow-Origin": "*",
-     Authorization: `Bearer J3GmG4fs5zMd_T9FocBl`,
+     Authorization: "Bearer J3GmG4fs5zMd_T9FocBl",
            };
 
 
   const getCharacter = (character:string) => {
     axios.get(api_url + character, {headers: theOneAPIHeaders})
     .then(response => {
-      setCharacter(response.data)
+      setCharacter(response.data);
     })
     .catch(error => {
-      return(console.log(error))
-    })
-  }
+      return(console.log(error));
+    });
+  };
 
   return (
     <div>
@@ -85,7 +85,7 @@ function Characters() {
         
         </div>
         </div>
-  )
+  );
 }
 
-export default Characters
+export default Characters;

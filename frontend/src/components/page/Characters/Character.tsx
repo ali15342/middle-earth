@@ -1,4 +1,5 @@
-import './characters.css'
+import "./characters.css";
+import React from "react";
 
 interface props {
   info: any;
@@ -14,7 +15,7 @@ function Character(props:props) {
       <p>{props.info.hair !== "" ? "Hair: " + props.info.hair : ""}</p>
       <p>{props.info.gender !== "" ? "Gender: " + props.info.gender : ""}</p>
       </div>
-  )
+  );
 }
 
-export default Character
+export default Character;

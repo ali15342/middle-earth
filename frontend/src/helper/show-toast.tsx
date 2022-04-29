@@ -1,4 +1,4 @@
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
 
 export function showToast(text: string) {
     toast(text, {
@@ -6,7 +6,7 @@ export function showToast(text: string) {
         closeButton: false,
         delay: 0,
         autoClose: 5000
-    })
+    });
 }
 
 export function showWarningToast(text: string) {
@@ -15,7 +15,7 @@ export function showWarningToast(text: string) {
         closeButton: false,
         delay: 0,
         autoClose: 5000
-    })
+    });
 }
 
 export function showErrorToast(text: string) {
@@ -24,5 +24,5 @@ export function showErrorToast(text: string) {
         closeButton: false,
         delay: 0,
         autoClose: 5000
-    })
+    });
 }

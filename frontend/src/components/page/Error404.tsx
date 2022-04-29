@@ -1,4 +1,5 @@
-import Navbar from '../Navbar/Navbar'
+import Navbar from "../Navbar/Navbar";
+import React from "react";
 
 function Error404() {
   return (
@@ -6,7 +7,7 @@ function Error404() {
         <Navbar/>
         Error 404 (ToDo: add gif of gandalf here)
     </div>
-  )
+  );
 }
 
-export default Error404
+export default Error404;

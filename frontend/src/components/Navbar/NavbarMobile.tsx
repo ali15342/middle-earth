@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
-import NavLinks from './NavLinks';
-import {GiHamburgerMenu} from 'react-icons/gi'
-import {VscChromeClose} from'react-icons/vsc'
+import React, {useState} from "react";
+import NavLinks from "./NavLinks";
+import {GiHamburgerMenu} from "react-icons/gi";
+import {VscChromeClose} from "react-icons/vsc";
 
 function NavbarMobile() {
 
@@ -11,21 +11,21 @@ function NavbarMobile() {
     <GiHamburgerMenu 
             className="hamburger"
             onClick={() => setOpen(!open)}>
-    </GiHamburgerMenu>
+    </GiHamburgerMenu>;
 
 const closeIcon =  
 <VscChromeClose 
         className="hamburger"
         onClick={() => setOpen(!open)}>
-</VscChromeClose>
+</VscChromeClose>;
 
   return (
-    <div className={open ? 'contentMobile contentMobileActive' : 'contentMobile'}>
+    <div className={open ? "contentMobile contentMobileActive" : "contentMobile"}>
         <label className="logo">Middle Earth Maps</label>
         {open ? closeIcon : hamburgerIcon}
         {open && <NavLinks/>}
       </div>
-  )
+  );
 }
 
-export default NavbarMobile
+export default NavbarMobile;

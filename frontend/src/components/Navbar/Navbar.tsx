@@ -1,6 +1,7 @@
-import './navbar.css'
-import NavbarDesktop from './NavbarDesktop';
-import NavbarMobile from './NavbarMobile';
+import "./navbar.css";
+import NavbarDesktop from "./NavbarDesktop";
+import NavbarMobile from "./NavbarMobile";
+import React from "react";
 
 
 function Navbar() {
@@ -9,7 +10,7 @@ function Navbar() {
       <NavbarDesktop/>
       <NavbarMobile/>
     </div>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

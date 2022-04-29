@@ -1,6 +1,7 @@
-import Navbar from "../Navbar/Navbar"
+import Navbar from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
-import '../../css/App.css'
+import "../../css/App.css";
+import React from "react";
 
 function Home() {
   return (
@@ -14,7 +15,7 @@ function Home() {
                 <Link to="../register" className="btn btn-primary App">Register</Link>
           </div>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

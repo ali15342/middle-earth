@@ -1,9 +1,9 @@
-import Navbar from '../Navbar/Navbar'
-import React from 'react'
+import Navbar from "../Navbar/Navbar";
+import React from "react";
 import { Box } from "rebass";
-import '../../css/App.css'
-import jwt from 'jwt-decode'
-import jwtDecode from 'jwt-decode';
+import "../../css/App.css";
+import jwt from "jwt-decode";
+import jwtDecode from "jwt-decode";
 import TextField from "@material-ui/core/TextField";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {showErrorToast, showToast} from "../../helper/show-toast";
@@ -27,31 +27,31 @@ type UserCredentials = {
 
 function Profile() {
   let username:any = {};
-  const defaultUserApi = credentialsApi()
+  const defaultUserApi = credentialsApi();
 
   const token = localStorage.getItem("jwt");
-  if (typeof token === 'string') {
+  if (typeof token === "string") {
     username = jwtDecode<jwtToken>(token);
   }
 
   const { register, handleSubmit } = useForm<UserCredentials>();
   const onSubmit: SubmitHandler<UserCredentials> = data => {
     submitHandler(data);
-  }
+  };
 
   const submitHandler = async(data: UserCredentials) => {
-    const userData = data
+    const userData = data;
     await defaultUserApi.updateCredentials(userData as Profile)
         .then((response=>{
           showToast("Success");
-          localStorage.removeItem("jwt")
-          localStorage.setItem("jwt", response.data.jwt)
+          localStorage.removeItem("jwt");
+          localStorage.setItem("jwt", response.data.jwt);
         }))
         .catch(exception=>{
-          showErrorToast("error")
-          console.log(exception)
-        })
-  }
+          showErrorToast("error");
+          console.log(exception);
+        });
+  };
 
   return (
     <div><Navbar/>
@@ -119,7 +119,7 @@ function Profile() {
       </Box>
     </Box>
     </div>
-  )
+  );
 }
 
-export default Profile
+export default Profile;
