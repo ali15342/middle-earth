@@ -3,7 +3,7 @@ import Character from "./Character";
 import "./characters.css";
 import React from "react";
 import axios from "axios";
-import {api_url} from "../../../services/backendService";
+import {api_url} from "../../../services/BackendService";
 import CharacterButton from "./CharacterButton";
 
 function Characters() {

@@ -3,7 +3,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import "../../../css/App.css";
-import { authenticationApi } from "../../../services/api/authenticationApi";
+import { authenticationApi } from "../../../services/api/AuthenticationApi";
 import { showToast, showErrorToast } from "../../../helper/show-toast";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {ToastContainer} from "react-toastify";
@@ -51,7 +51,7 @@ function Login() {
               <TextField {...register("username", { required: true })}
                 label="username"
                 style={{ width: "300px", marginBottom: "30px" }}
-                rowsMax={1}
+                maxRows={1}
                 className={"middleContent"}
               />
               <br/>
@@ -59,7 +59,7 @@ function Login() {
                 label="password"
                 type="password"
                 style={{ width: "300px", marginBottom: "15px" }}
-                rowsMax={1}
+                maxRows={1}
                 className={"middleContent"}
               />
               <br/>

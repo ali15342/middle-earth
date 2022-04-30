@@ -5,7 +5,7 @@ import { Box } from "rebass";
 import TextField from "@material-ui/core/TextField";
 import "../../../css/App.css";
 import {showErrorToast, showToast} from "../../../helper/show-toast";
-import {authenticationApi} from "../../../services/api/authenticationApi";
+import {authenticationApi} from "../../../services/api/AuthenticationApi";
 import {SubmitHandler, useForm} from "react-hook-form";
 
 interface Registration{
@@ -70,7 +70,7 @@ function Registration() {
               <TextField {...register("username", { required: true })}
                 label="username"
                 style={{ width: "300px", marginBottom: "30px" }}
-                rowsMax={1}
+                maxRows={1}
                 className={"middleContent"}
                 required
               />
@@ -79,7 +79,7 @@ function Registration() {
                 label="email"
                 type="email"
                 style={{ width: "300px", marginBottom: "30px" }}
-                rowsMax={1}
+                maxRows={1}
                 className={"middleContent"}
                 required
               />
@@ -88,7 +88,7 @@ function Registration() {
                 label="password"
                 type="password"
                 style={{ width: "300px", marginBottom: "15px" }}
-                rowsMax={1}
+                maxRows={1}
                 className={"middleContent"}
                 required
               />

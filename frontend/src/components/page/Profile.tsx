@@ -1,13 +1,14 @@
 import Navbar from "../Navbar/Navbar";
-import React from "react";
+import React, {useState} from "react";
 import { Box } from "rebass";
 import "../../css/App.css";
 import jwt from "jwt-decode";
 import jwtDecode from "jwt-decode";
 import TextField from "@material-ui/core/TextField";
-import {SubmitHandler, useForm} from "react-hook-form";
+import {set, SubmitHandler, useForm} from "react-hook-form";
 import {showErrorToast, showToast} from "../../helper/show-toast";
-import {credentialsApi} from "../../services/api/credentialsApi";
+import {credentialsApi} from "../../services/api/CredentialsApi";
+import Quiz from "./quiz/Quiz";
 
 interface jwtToken {
   name: string
@@ -28,6 +29,7 @@ type UserCredentials = {
 function Profile() {
   let username:any = {};
   const defaultUserApi = credentialsApi();
+  const [isMounted, setIsMounted] = useState(false);
 
   const token = localStorage.getItem("jwt");
   if (typeof token === "string") {
@@ -77,7 +79,7 @@ function Profile() {
           <h2 className="">Middle Earth</h2>
           <h1 className="">Nerd Society</h1>
           <hr />
-          <p>Willkommen {username.username}</p>
+          <p>Welcome {username.username}</p>
           <div style={{ marginBottom: "20px" }}>
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -85,7 +87,7 @@ function Profile() {
           <TextField {...register("username")}
                      label="username"
                      style={{ width: "300px", marginBottom: "30px" }}
-                     rowsMax={1}
+                     maxRows={1}
                      className={"middleContent"}
                      placeholder={username.username}
           />
@@ -93,7 +95,7 @@ function Profile() {
           <TextField {...register("email")}
                      label="email"
                      style={{ width: "300px", marginBottom: "30px" }}
-                     rowsMax={1}
+                     maxRows={1}
                      className={"middleContent"}
                      placeholder={username.email}
           />
@@ -101,7 +103,7 @@ function Profile() {
           <TextField {...register("password")}
                      label="password"
                      style={{ width: "300px", marginBottom: "30px" }}
-                     rowsMax={1}
+                     maxRows={1}
                      className={"middleContent"}
                      type={"password"}
           />
@@ -109,6 +111,12 @@ function Profile() {
               <input className={"btn btn-primary App"} type={"submit"} value={"Change Data"}/>
             </div>
           </form>
+          <hr/>
+          <h2>Test your nerd level</h2>
+          <input className ={"btn btn-primary App"} type={"button"} value={"Take Quiz"} onClick={()=>setIsMounted(true)}/>
+          {
+            isMounted && <Quiz/>
+          }
         </div>
       </Box>
       <Box

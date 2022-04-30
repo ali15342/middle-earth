@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {authenticationApi} from "../../services/api/authenticationApi";
+import {authenticationApi} from "../../services/api/AuthenticationApi";
 
 function NavLinks() {
   return (
