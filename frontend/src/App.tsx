@@ -11,8 +11,8 @@ import Home from "./components/pages/Home";
 import Characters from "./components/pages/characters/Characters";
 import MapPage from "./components/pages/MapPage";
 import Error404 from "./components/pages/Error404";
-import Login from "./components/pages/Authentication/Login";
-import Register from "./components/pages/Authentication/Registration";
+import Login from "./components/pages/authentication/Login";
+import Register from "./components/pages/authentication/Registration";
 import Profile from "./components/pages/Profile";
 
 function App() {
