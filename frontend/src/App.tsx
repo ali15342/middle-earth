@@ -6,14 +6,14 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import About from "./components/page/About/About";
-import Home from "./components/page/Home";
-import Characters from "./components/page/Characters/Characters";
-import MapPage from "./components/page/MapPage";
-import Error404 from "./components/page/Error404";
-import Login from "./components/page/Authentication/Login";
-import Register from "./components/page/Authentication/Registration";
-import Profile from "./components/page/Profile";
+import About from "./components/pages/about/About";
+import Home from "./components/pages/Home";
+import Characters from "./components/pages/characters/Characters";
+import MapPage from "./components/pages/MapPage";
+import Error404 from "./components/pages/Error404";
+import Login from "./components/pages/Authentication/Login";
+import Register from "./components/pages/Authentication/Registration";
+import Profile from "./components/pages/Profile";
 
 function App() {
   return (

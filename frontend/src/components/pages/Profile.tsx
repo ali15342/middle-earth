@@ -1,4 +1,4 @@
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../navbar/Navbar";
 import React, {useState} from "react";
 import { Box } from "rebass";
 import "../../css/App.css";

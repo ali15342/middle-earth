@@ -1,5 +1,5 @@
 import axios, {AxiosResponse} from "axios";
-import Profile from "../../components/page/Profile";
+import Profile from "../../components/pages/Profile";
 
 const {REACT_APP_BASE_URL} = process.env;
 const userBaseApi = `${REACT_APP_BASE_URL}/api/user`;

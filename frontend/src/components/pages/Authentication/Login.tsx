@@ -1,4 +1,4 @@
-import Navbar from "../../Navbar/Navbar";
+import Navbar from "../../navbar/Navbar";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";

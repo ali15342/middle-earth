@@ -1,5 +1,5 @@
 import Map from "../Map";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../navbar/Navbar";
 import React from "react";
 
 function MapPage() {
