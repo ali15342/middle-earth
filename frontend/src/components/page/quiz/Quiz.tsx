@@ -1,40 +1,27 @@
 import React, {useState} from "react";
+import {QuizModel} from "./QuizModel";
 import {quizInput} from "./QuizInput";
-import QuizMaster from "./QuizMaster";
 
-function Quiz () {
-    const [pageIndex, setPageIndex] = useState(0);
-    const goToNextPage = () => {
-        setPageIndex(pageIndex + 1);
+const Quiz: React.FC<QuizModel> = ({question, joyces, correctAnswer, userAnswer, id}) =>{
+    const[selectedUserAnswer, setSelectedUserAnswer] = useState<string>("");
+    const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedUserAnswer(event.target.value);
     };
-
-    return (
-        <div className="App">
-            <div className="content" style={{margin: "auto", width: "80%", height: "30%"}}>
-                <hr/>
-                <h2 className="mb-1" style={{color: "white"}}>Quiz</h2>
-                        <div className="control" style={{color: "white"}}>
-                            {quizInput?.map(data =>(
-                            <>
-                                {
-                                pageIndex === data.id ?
-                                    <QuizMaster question={data.question} joyces={data.joyces} answer={data.answer}
-                                                id={pageIndex}/>
-                                    :
-                                    <></>
-                                }
-                            </>))}
-                        </div>
-                {
-                    pageIndex < quizInput.length ?
-                    <input className={"btn btn-primary App"} type={"button"} value={"Next Question"}
-                           onClick={() => goToNextPage()}/>
-                        :
-                        <p>Quiz done - Retry</p>
-                }
-            </div>
+    quizInput[id].userAnswer = selectedUserAnswer;
+    return(
+        <div className="topMargin">
+            <h2 style={{color: "white"}}>{question}</h2>
+            <p>{userAnswer}</p>
+            {joyces.map(data=>
+            <>
+                <label style={{marginRight: "10px"}}>
+                <input type={"radio"} value={data} name={"quiz"} onChange={inputHandler}/>
+                    {data}
+                </label>
+            </>
+            )}
         </div>
     );
-}
+};
 
 export default Quiz;

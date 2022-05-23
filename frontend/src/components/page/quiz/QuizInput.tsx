@@ -5,30 +5,35 @@ export const quizInput: QuizModel[] = [
     id: 0,
     question: "Who is the first Bearer of the one ring?",
     joyces: ["Frodo", "Smeagol", "Sauron", "Gandalf"],
-    answer: 2
+    correctAnswer: "Sauron",
+    userAnswer: ""
   },
   {
     id:1,
     question: "How did Gandalf escape Isengard?",
     joyces: ["A great eagle saved him", "Dark magic", "Radagast the brown came to rescue"],
-    answer: 0
+    correctAnswer: "A great eagle saved him",
+    userAnswer: ""
   },
   {
     id:2,
     question: "What is Wormtongue’s real name?",
     joyces: ["Grima", "Gima", "Grim", "Glima"],
-    answer: 0
+    correctAnswer: "Grima",
+    userAnswer: ""
   },
   {
     id:3,
     question: "What is the name of the giant spider who tried to eat Frodo?",
     joyces: ["Shelbo", "Shelob", "Shelop", "Scelob"],
-    answer: 1
+    correctAnswer: "Shelob",
+    userAnswer: ""
   },
   {
     id:4,
     question: "What type of animal does Gollum give to Frodo to eat?",
     joyces: ["Zebra", "Cat", "Cow", "Rat", "Rabbit", "Mouse", "Wolf", "Fish"],
-    answer: 4
+    correctAnswer: "Rabbit",
+    userAnswer: ""
   }
 ];

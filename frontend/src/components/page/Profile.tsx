@@ -8,7 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import {set, SubmitHandler, useForm} from "react-hook-form";
 import {showErrorToast, showToast} from "../../helper/show-toast";
 import {credentialsApi} from "../../services/api/CredentialsApi";
-import Quiz from "./quiz/Quiz";
+import QuizMaster from "./quiz/QuizMaster";
 
 interface jwtToken {
   name: string
@@ -113,9 +113,9 @@ function Profile() {
           </form>
           <hr/>
           <h2>Test your nerd level</h2>
-          <input className ={"btn btn-primary App"} type={"button"} value={"Take Quiz"} onClick={()=>setIsMounted(true)}/>
+          {!isMounted ? <input className ={"btn btn-primary App"} type={"button"} value={"Take Quiz"} onClick={()=>setIsMounted(true)}/> : null}
           {
-            isMounted && <Quiz/>
+           isMounted && <QuizMaster/>
           }
         </div>
       </Box>
