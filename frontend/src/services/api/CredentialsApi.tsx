@@ -7,7 +7,7 @@ const headers = {headers: {"Content-Type": "application/json", "mode": "no-cors"
 
 export const credentialsApi = () => {
     const updateCredentials = (profile: Profile): Promise<AxiosResponse> => {
-        return axios.put(`${userBaseApi}/updateCredentials`, profile, headers);
+        return axios.patch(`${userBaseApi}/updateCredentials`, profile, headers);
     };
 
     return {updateCredentials};

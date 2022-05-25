@@ -1,8 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {authenticationApi} from "../../services/api/AuthenticationApi";
 
 function NavLinks() {
+    const navigate = useNavigate();
+    const logout = async () => {
+        await authenticationApi().logout().then((()=>{localStorage.removeItem("jwt"); navigate("/");})).catch((exception=>console.log(exception)));
+    };
   return (
     <ul className="center">
         <li>
@@ -34,8 +38,7 @@ function NavLinks() {
             localStorage.getItem("jwt") != null ?
             <li>
                 <Link className="navbar-brand boldText" to="/" onClick={()=> {
-                    localStorage.removeItem("jwt");
-                    authenticationApi().logout();
+                    logout();
                 }}>Logout</Link>
             </li>
             :

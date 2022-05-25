@@ -30,22 +30,17 @@ public class UserController {
         this.jwtService = jwtService;
     }
 
-    @PutMapping(value = "/updateCredentials")
+    @PatchMapping(value = "/updateCredentials")
     public ResponseEntity<UserResponseDto> updateCredentials(HttpServletRequest request, @Valid @RequestBody UserRequestDto userRequestDto){
         var jwtToken = JwtHelper.parseJwt(request);
-        var usernameAlt = jwtService.getUserNameFromJwtToken(jwtToken);
+        var usernameOld = jwtService.getUserNameFromJwtToken(jwtToken);
 
-        UserResponseDto user = userService.updateUserCredentials(userRequestDto, usernameAlt, jwtToken);
+        UserResponseDto user = userService.updateUserCredentials(userRequestDto, usernameOld, jwtToken);
 
         if(user == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
         return new ResponseEntity<>(user, HttpStatus.OK);
-    }
-
-    @GetMapping(value="test")
-    public ResponseEntity getInfo(){
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

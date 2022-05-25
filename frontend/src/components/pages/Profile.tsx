@@ -5,7 +5,7 @@ import "../../css/App.css";
 import jwt from "jwt-decode";
 import jwtDecode from "jwt-decode";
 import TextField from "@material-ui/core/TextField";
-import {set, SubmitHandler, useForm} from "react-hook-form";
+import {SubmitHandler, useForm} from "react-hook-form";
 import {showErrorToast, showToast} from "../../helper/show-toast";
 import {credentialsApi} from "../../services/api/CredentialsApi";
 import QuizMaster from "./quiz/QuizMaster";
@@ -48,6 +48,7 @@ function Profile() {
           showToast("Success");
           localStorage.removeItem("jwt");
           localStorage.setItem("jwt", response.data.jwt);
+          window.location.reload();
         }))
         .catch(exception=>{
           showErrorToast("error");
@@ -126,6 +127,9 @@ function Profile() {
       >
       </Box>
     </Box>
+      <>
+        <br/>
+      </>
     </div>
   );
 }

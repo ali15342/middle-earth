@@ -14,19 +14,20 @@ import Error404 from "./components/pages/Error404";
 import Login from "./components/pages/authentication/Login";
 import Register from "./components/pages/authentication/Registration";
 import Profile from "./components/pages/Profile";
+import YouShallNotPass from "./components/pages/YouShallNotPass";
 
 function App() {
   return (
     <Router>
     <Routes>
-      <Route path="/" element={<Home/>}></Route>
-      <Route path="/about" element={<About/>}></Route>
-      <Route path="/characters" element={<Characters/>}></Route>
-      <Route path="/map" element={<MapPage/>}></Route>
-      <Route path="/login" element={<Login/>}></Route>
-      <Route path="/register" element={<Register/>}></Route>
-      <Route path="/profile" element={<Profile/>}></Route>
-      <Route path="*" element={<Error404/>}></Route>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/about" element={<About/>}/>
+      <Route path="/characters" element={localStorage.getItem("jwt") ? <Characters/> : <YouShallNotPass/>}/>
+      <Route path="/map" element={<MapPage/>}/>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/register" element={<Register/>}/>
+      <Route path="/profile" element={localStorage.getItem("jwt") ? <Profile/> : <YouShallNotPass/>}/>
+      <Route path="*" element={<Error404/>}/>
     </Routes>
     </Router>
 

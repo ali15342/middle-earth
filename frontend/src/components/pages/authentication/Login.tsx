@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import "../../../css/App.css";
 import { authenticationApi } from "../../../services/api/AuthenticationApi";
-import { showToast, showErrorToast } from "../../../helper/show-toast";
+import { showToast, showErrorToast, showWarningToast } from "../../../helper/show-toast";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {ToastContainer} from "react-toastify";
 
@@ -34,6 +34,7 @@ function Login() {
     .then((response=>{
       showToast("Success");
       localStorage.setItem("jwt", response.data.jwt);
+      setTimeout(()=>window.location.reload(), 100);
       navigate("../map");
     }))
     .catch(exception=>{
@@ -43,8 +44,10 @@ function Login() {
   }; 
 
   return (
-    <div><Navbar/>
-   <div className="App">
+    <div>
+        <Navbar/>
+        <ToastContainer/>
+        <div className="App">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
               <h1 className="boldText">Login</h1>
@@ -79,7 +82,6 @@ function Login() {
           <div style={{ marginBottom: "20px" }}>
           </div>
         </div>
-      <ToastContainer/>
     </div>
   );
 }

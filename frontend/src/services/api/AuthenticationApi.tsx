@@ -17,7 +17,7 @@ const registration = (registration: Registration): Promise<AxiosResponse> => {
 };
 
 const logout = (): Promise<AxiosResponse> =>  {
-    return axios.post(`${userBaseApi}/logout`, headersJWT);
+    return axios.post(`${userBaseApi}/logout`, null, headersJWT);
 };
 
 return {authenticate, registration, logout};

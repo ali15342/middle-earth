@@ -7,6 +7,7 @@ import "../../../css/App.css";
 import {showErrorToast, showToast} from "../../../helper/show-toast";
 import {authenticationApi} from "../../../services/api/AuthenticationApi";
 import {SubmitHandler, useForm} from "react-hook-form";
+import {ToastContainer} from "react-toastify";
 
 interface Registration{
   username: string,
@@ -35,7 +36,7 @@ function Registration() {
     await defaultUserApi.registration(registrationData as Registration)
         .then((response=>{
           showToast("Success");
-          navigate("../login");
+          setTimeout(()=>navigate("../login"), 1500);
         }))
         .catch(exception=>{
           showErrorToast("error");
@@ -44,7 +45,9 @@ function Registration() {
   };
 
   return (
-    <div><Navbar/>
+    <div>
+      <Navbar/>
+      <ToastContainer/>
     <Box
       sx={{
         display: "flex",

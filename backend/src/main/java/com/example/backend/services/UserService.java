@@ -86,27 +86,29 @@ public class UserService {
         return new LoginResponseDto(jwt);
     }
 
-    public UserResponseDto updateUserCredentials(UserRequestDto userRequestDto, String usernameAlt, String jwtToken){
-        User user = userRepository.getUserByUsername(usernameAlt);
+    public UserResponseDto updateUserCredentials(UserRequestDto userRequestDto, String usernameOld, String jwtToken){
+        User user = userRepository.getUserByUsername(usernameOld);
 
         if(user==null){
             return null;
         }
 
-        if(userRequestDto.getPassword() != null && userRequestDto.getPassword() != "") {
+        if(userRequestDto.getPassword() != null & userRequestDto.getPassword() != "") {
             String hashedPassword = bCryptPasswordHelper.getSHA512SecurePassword(userRequestDto.getPassword(), user.getSalt());
             user.setHash(hashedPassword);
         }
-        if(userRequestDto.getUsername() != null && userRequestDto.getUsername() != ""){
-            boolean userExists = userRepository.existsByUsername(userRequestDto.getUsername());
-            if(userExists){
+
+        if(userRequestDto.getUsername() != null & userRequestDto.getUsername() != ""){
+            boolean userUsernameExists = userRepository.existsByUsername(userRequestDto.getUsername());
+            if(userUsernameExists){
                 return null;
             }
             user.setUsername(userRequestDto.getUsername());
         }
-        if(userRequestDto.getEmail() != null && userRequestDto.getEmail() != ""){
-            boolean userExists = userRepository.existsByEmail(userRequestDto.getEmail());
-            if(userExists){
+
+        if(userRequestDto.getEmail() != null & userRequestDto.getEmail() != ""){
+            boolean userEmailExists = userRepository.existsByEmail(userRequestDto.getEmail());
+            if(userEmailExists){
                 return null;
             }
             user.setEmail(userRequestDto.getEmail());
