@@ -1,10 +1,6 @@
 package com.example.backend.controllers;
 
-import com.example.backend.dto.request.LoginRequestDto;
-import com.example.backend.dto.request.RegistrationRequestDto;
 import com.example.backend.dto.request.UserRequestDto;
-import com.example.backend.dto.response.LoginResponseDto;
-import com.example.backend.dto.response.RegistrationResponseDto;
 import com.example.backend.dto.response.UserResponseDto;
 import com.example.backend.helper.JwtHelper;
 import com.example.backend.security.JwtService;

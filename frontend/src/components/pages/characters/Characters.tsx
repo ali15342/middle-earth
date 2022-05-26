@@ -3,8 +3,9 @@ import Character from "./Character";
 import "./characters.css";
 import React from "react";
 import axios from "axios";
-import {api_url} from "../../../services/BackendService";
 import CharacterButton from "./CharacterButton";
+
+const theOne_url = "https://the-one-api.dev/v2/character?name=";
 
 function Characters() {
 
@@ -36,11 +37,11 @@ function Characters() {
       mode: "no-cors",
      "Access-Control-Allow-Origin": "*",
      Authorization: "Bearer J3GmG4fs5zMd_T9FocBl",
-           };
+  };
 
 
   const getCharacter = (character:string) => {
-    axios.get(api_url + character, {headers: theOneAPIHeaders})
+    axios.get(theOne_url + character, {headers: theOneAPIHeaders})
     .then(response => {
       setCharacter(response.data);
     })
@@ -56,35 +57,31 @@ function Characters() {
           <div>
           <h1>Characters</h1>
           <p>Click on one of the icons to get information about a member of the fellowship!</p>
-         
           <div>
-              <button onClick={() => getCharacter("Gandalf")}>
-                <CharacterButton image={"gandalf"}/>
-              </button>
-            
-              <button onClick={() => getCharacter("Frodo Baggins")}>
-                <CharacterButton image={"frodo"}/>
-              </button>
+                  <button onClick={() => getCharacter("Gandalf")}>
+                    <CharacterButton image={"gandalf"}/>
+                  </button>
 
-              <button onClick={() => getCharacter("Legolas")}>
-                <CharacterButton image={"legolas"}/>
-              </button>
+                  <button onClick={() => getCharacter("Frodo Baggins")}>
+                    <CharacterButton image={"frodo"}/>
+                  </button>
 
-              <button onClick={() => getCharacter("Galadriel")}>
-                <CharacterButton image={"galadriel"}/>
-              </button>
+                  <button onClick={() => getCharacter("Legolas")}>
+                    <CharacterButton image={"legolas"}/>
+                  </button>
 
-              <button onClick={() => getCharacter("Gollum")}>
-                <CharacterButton image={"gollum"}/>
-              </button>
-          </div>
+                  <button onClick={() => getCharacter("Galadriel")}>
+                    <CharacterButton image={"galadriel"}/>
+                  </button>
 
-          </div>
-          
-        <Character info={character.docs[0]}/>
-        
+                  <button onClick={() => getCharacter("Gollum")}>
+                    <CharacterButton image={"gollum"}/>
+                  </button>
+                    </div>
+            </div>
+            <Character info={character.docs[0]}/>
         </div>
-        </div>
+    </div>
   );
 }
 

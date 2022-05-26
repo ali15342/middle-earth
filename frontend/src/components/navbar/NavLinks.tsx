@@ -36,6 +36,14 @@ function NavLinks() {
         }
         {
             localStorage.getItem("jwt") != null ?
+                <li>
+                    <Link className="navbar-brand boldText" to="/tweets">Tweets</Link>
+                </li>
+                :
+                null
+        }
+        {
+            localStorage.getItem("jwt") != null ?
             <li>
                 <Link className="navbar-brand boldText" to="/" onClick={()=> {
                     logout();
