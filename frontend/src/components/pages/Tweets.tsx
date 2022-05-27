@@ -1,39 +1,47 @@
 import {twitterApi} from "../../services/api/TwitterApi";
-import {showErrorToast, showToast} from "../../helper/show-toast";
 import Navbar from "../navbar/Navbar";
 import React, {useEffect, useState} from "react";
+import {TwitterTweetEmbed} from "react-twitter-embed";
+
+interface Tweets{
+    id: string,
+    text: string,
+    createdAt: string
+}
 
 function Tweets() {
     const defaultTwitterApi = twitterApi();
+    const [twitterResponse, setTwitterResponse] = useState<Tweets[]>();
 
     useEffect(()=>{
-        getTweets();
-    });
+        async function fetchTweets() {
+            const response = await defaultTwitterApi.tweets();
+            setTwitterResponse(response.data.response.data);
+        }
+        fetchTweets();
+    }, []);
 
-const [twitterResponseText, setTwitterResponseText] = useState<string>("");
-const [twitterResponseCreatedAt, setTwitterResponseCreatedAt] = useState<string>("");
-
-const getTweets = async () => {
-    await defaultTwitterApi.tweets()
-        .then(response => {
-            setTwitterResponseText(response.data.response.data[0].text);
-            setTwitterResponseCreatedAt(response.data.response.data[0].createdAt);
-        })
-        .catch(exception => {
-            showErrorToast("error");
-            console.log(exception);
-        });
-};
-
-return (
-    <div>
-        <Navbar/>
-        <div className="App">
-            <h1>Tweets</h1>
-            <p>{twitterResponseText}</p>
-            <p>{twitterResponseCreatedAt}</p>
+    return (
+        <div>
+            <Navbar/>
+            <div className="App">
+                <h1>Tweets</h1>
+                {twitterResponse?.map(tweet=>
+                   <>
+                       <div className="content" style={{margin: "auto", width: "80%", height: "100%"}}>
+                        <p style={{color: "white"}}>
+                            {tweet.text}
+                            {tweet.createdAt}
+                        </p>
+                           <div style={{alignItems: "center", justifyContent: "center", display:"flex"}}>
+                               <TwitterTweetEmbed tweetId={tweet.id} />
+                           </div>
+                       </div>
+                       <hr/>
+                   </>
+                )}
+            </div>
         </div>
-    </div>
-    );
-}
-export default Tweets;
+        );
+    }
+    export default Tweets;

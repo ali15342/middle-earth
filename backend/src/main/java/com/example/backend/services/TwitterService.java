@@ -20,7 +20,7 @@ public class TwitterService {
     public TwitterResponseDto getTweets(){
         twitterResponseDto = new TwitterResponseDto();
         TwitterApi apiInstance = new TwitterApi();
-        TwitterCredentialsBearer credentials = new TwitterCredentialsBearer("Bearer Token");
+        TwitterCredentialsBearer credentials = new TwitterCredentialsBearer(System.getenv("BEARER_TOKEN"));
         apiInstance.setTwitterCredentials(credentials);
 
         Set<String> tweetFields = new HashSet<>();
