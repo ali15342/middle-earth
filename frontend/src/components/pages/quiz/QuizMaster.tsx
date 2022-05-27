@@ -10,11 +10,11 @@ function QuizMaster(){
         setPageIndex(pageIndex + 1);
     };
     return (
-        <div className="App">
-            <div className="content" style={{margin: "auto", width: "80%", height: "30%"}}>
+        <div >
+            <div  style={{margin: "auto", width: "80%", height: "30%"}}>
                 <hr/>
-                <h2 className="mb-1" style={{color: "white"}}>Quiz</h2>
-                        <div className="control" style={{color: "white"}}>
+                <h2 className="mb-1" style={{color: "black"}}>Quiz</h2>
+                        <div className="control" style={{color: "black"}}>
                             {quizInput?.map(data =>(
                             <>
                                 {

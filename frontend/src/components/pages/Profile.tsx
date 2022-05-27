@@ -77,10 +77,9 @@ function Profile() {
         }}
       >
         <div className="App">
-          <h2 className="">Middle Earth</h2>
-          <h1 className="">Nerd Society</h1>
+          <h2 className="">Welcome {username.username}</h2>
           <hr />
-          <p>Welcome {username.username}</p>
+          <h1 className="">Change your profile details</h1>
           <div style={{ marginBottom: "20px" }}>
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>

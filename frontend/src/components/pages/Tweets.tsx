@@ -24,15 +24,11 @@ function Tweets() {
     return (
         <div>
             <Navbar/>
-            <div className="App">
+            <div >
                 <h1>Tweets</h1>
                 {twitterResponse?.map(tweet=>
                    <>
-                       <div className="content" style={{margin: "auto", width: "80%", height: "100%"}}>
-                        <p style={{color: "white"}}>
-                            {tweet.text}
-                            {tweet.createdAt}
-                        </p>
+                       <div style={{margin: "auto", width: "80%", height: "100%"}}>
                            <div style={{alignItems: "center", justifyContent: "center", display:"flex"}}>
                                <TwitterTweetEmbed tweetId={tweet.id} />
                            </div>

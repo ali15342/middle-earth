@@ -10,8 +10,8 @@ const Quiz: React.FC<QuizModel> = ({question, joyces, correctAnswer, userAnswer,
     quizInput[id].userAnswer = selectedUserAnswer;
     return(
         <div className="topMargin">
-            <h2 style={{color: "white"}}>{question}</h2>
-            <p>{userAnswer}</p>
+            <h2 style={{color: "black"}}>{question}</h2>
+         
             {joyces.map(data=>
             <>
                 <label style={{marginRight: "10px"}}>
