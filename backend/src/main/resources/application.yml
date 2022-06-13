@@ -1,6 +1,6 @@
 spring:
     datasource:
-        url: jdbc:postgresql://localhost:5432/middleearth
+        url: jdbc:postgresql://127.0.0.1:5432/middleearth
         username: postgres
         password: root
         driver-class-name: org.postgresql.Driver
@@ -19,3 +19,5 @@ jwt:
 
 dozer:
     mapping-files: classpath:mapping.xml
+
+bearerToken: AAAAAAAAAAAAAAAAAAAAAMsHdAEAAAAASeNVKpiQ388VrvJqsd8L97TGDjk%3DpaKlbasR2lfzbokiH2GnlGU3EhsteB5gYcy6OdmpQdqAhnsDkd

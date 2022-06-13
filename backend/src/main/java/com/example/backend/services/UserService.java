@@ -1,22 +1,23 @@
 package com.example.backend.services;
 
 import com.example.backend.dto.request.LoginRequestDto;
+import com.example.backend.dto.request.RegistrationRequestDto;
 import com.example.backend.dto.request.UserRequestDto;
 import com.example.backend.dto.response.LoginResponseDto;
+import com.example.backend.dto.response.RegistrationResponseDto;
 import com.example.backend.dto.response.UserResponseDto;
-import com.example.backend.models.Fractions;
+import com.example.backend.models.FractionEnum;
 import com.example.backend.models.User;
 import com.example.backend.repositories.UserRepository;
 import com.example.backend.security.BCryptPasswordHelper;
 import com.example.backend.security.JwtService;
 import com.github.dozermapper.core.Mapper;
-import com.example.backend.dto.request.RegistrationRequestDto;
-import com.example.backend.dto.response.RegistrationResponseDto;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
 import java.util.UUID;
 
 
@@ -55,7 +56,7 @@ public class UserService {
 
         dbUser.setHash(hashedPassword);
         dbUser.setSalt(randomSalt);
-        dbUser.setFraction(Fractions.HOBBIT);
+        dbUser.setFraction(FractionEnum.DEFAULT);
 
         userRepository.save(dbUser);
 
@@ -120,5 +121,16 @@ public class UserService {
         String jwt = this.jwtService.generateNewJwtToken(user);
 
         return new UserResponseDto(jwt);
+    }
+
+    public void updateUserFraction(String username, FractionEnum fraction){
+        User user = userRepository.getUserByUsername(username);
+
+        if (user.getFraction() != FractionEnum.DEFAULT) {
+            return;
+        }
+
+        user.setFraction(fraction);
+        userRepository.save(user);
     }
 }

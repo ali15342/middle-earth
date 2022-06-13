@@ -24,7 +24,7 @@ public class User {
 
     @Column(nullable = false, length = 50)
     @Enumerated(EnumType.STRING)
-    private Fractions fraction;
+    private FractionEnum fraction;
 
     @Column(nullable = false)
     private String salt;
@@ -32,7 +32,7 @@ public class User {
     @Column(nullable = false)
     private String hash;
 
-    public User(String username, String email, Fractions fraction, String hash, String salt) {
+    public User(String username, String email, FractionEnum fraction, String hash, String salt) {
         this.username = username;
         this.email = email;
         this.fraction = fraction;
@@ -83,11 +83,11 @@ public class User {
         this.hash = hash;
     }
 
-    public Fractions getFraction() {
+    public FractionEnum getFraction() {
         return fraction;
     }
 
-    public void setFraction(Fractions fraction) {
+    public void setFraction(FractionEnum fraction) {
         this.fraction = fraction;
     }
 }

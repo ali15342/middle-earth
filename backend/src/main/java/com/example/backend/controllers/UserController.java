@@ -1,5 +1,6 @@
 package com.example.backend.controllers;
 
+import com.example.backend.dto.request.UpdateFractionRequestDto;
 import com.example.backend.dto.request.UserRequestDto;
 import com.example.backend.dto.response.UserResponseDto;
 import com.example.backend.helper.JwtHelper;
@@ -38,5 +39,15 @@ public class UserController {
         }
 
         return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/fraction")
+    public ResponseEntity updateFraction(HttpServletRequest request, @Valid @RequestBody UpdateFractionRequestDto updateFractionRequestDto){
+        var jwtToken = JwtHelper.parseJwt(request);
+        var username = jwtService.getUserNameFromJwtToken(jwtToken);
+
+        userService.updateUserFraction(username, updateFractionRequestDto.fraction);
+
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

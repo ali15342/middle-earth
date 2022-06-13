@@ -6,7 +6,14 @@ import com.twitter.clientlib.TwitterCredentialsBearer;
 import com.twitter.clientlib.api.TwitterApi;
 import com.twitter.clientlib.model.MultiTweetLookupResponse;
 import com.twitter.clientlib.model.ResourceUnauthorizedProblem;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,11 +23,13 @@ import java.util.Set;
 @Service
 public class TwitterService {
     private TwitterResponseDto twitterResponseDto = null;
+    @Value("${bearerToken}")
+    private String bearerToken;
 
     public TwitterResponseDto getTweets(){
         twitterResponseDto = new TwitterResponseDto();
         TwitterApi apiInstance = new TwitterApi();
-        TwitterCredentialsBearer credentials = new TwitterCredentialsBearer(System.getenv("BEARER_TOKEN"));
+        TwitterCredentialsBearer credentials = new TwitterCredentialsBearer(bearerToken);
         apiInstance.setTwitterCredentials(credentials);
 
         Set<String> tweetFields = new HashSet<>();
@@ -30,13 +39,20 @@ public class TwitterService {
         tweetFields.add("lang");
 
         try{
+            MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
+            headers.add("Authorization", String.format("Bearer %s", bearerToken));
+
+            HttpEntity<Void> entity = new HttpEntity<>(headers);
+
+            MultiTweetLookupResponse response = (new RestTemplate().exchange("https://api.twitter.com/2/tweets/search/recent?query=lotr", HttpMethod.GET, entity, MultiTweetLookupResponse.class)).getBody();
+
+            // https://api.twitter.com/2/tweets/search/recent?query=lotr
+
             List<String> tweetIds = new ArrayList<>();
-            tweetIds.add("1527646633336442880");
-            tweetIds.add("1527166873795760128");
-            tweetIds.add("1527628528153395200");
-            tweetIds.add("1527861771834384386");
-            tweetIds.add("1529605036594143235");
-            tweetIds.add("1529401235148877824");
+
+            for(int i = 0; i < response.getData().size(); i++){
+                tweetIds.add(response.getData().get(i).getId());
+            }
 
             MultiTweetLookupResponse result = apiInstance.tweets().findTweetsById(tweetIds, null, tweetFields, null, null,null,null);
             if(result.getErrors()!=null && result.getErrors().size()>0){
