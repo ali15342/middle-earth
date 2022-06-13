@@ -5,7 +5,6 @@ import React from "react";
 function MapPage() {
   return (
     <div>
-        <Navbar/>
         <Map/>
     </div>
   );

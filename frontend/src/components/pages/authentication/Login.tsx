@@ -45,7 +45,6 @@ function Login() {
 
   return (
     <div>
-        <Navbar/>
         <ToastContainer/>
         <div className="App">
           <form onSubmit={handleSubmit(onSubmit)}>

@@ -1,5 +1,4 @@
 import {twitterApi} from "../../services/api/TwitterApi";
-import Navbar from "../navbar/Navbar";
 import React, {useEffect, useState} from "react";
 import {TwitterTweetEmbed} from "react-twitter-embed";
 
@@ -23,7 +22,6 @@ function Tweets() {
 
     return (
         <div>
-            <Navbar/>
             <div >
                 <h1>Tweets</h1>
                 {twitterResponse?.map(tweet=>

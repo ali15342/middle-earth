@@ -5,7 +5,6 @@ import "./about.css";
 function About() {
   return (
     <div>
-      <Navbar/>
       <div>
          <h1>About</h1>
          <p className="text-center">Explore the world of middle earth with our map. What we offer:</p>

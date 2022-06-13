@@ -57,7 +57,7 @@ function Profile() {
   };
 
   return (
-    <div><Navbar/>
+    <div>
     <Box
       sx={{
         display: "flex",

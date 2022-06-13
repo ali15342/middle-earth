@@ -46,7 +46,6 @@ function Registration() {
 
   return (
     <div>
-      <Navbar/>
       <ToastContainer/>
     <Box
       sx={{
