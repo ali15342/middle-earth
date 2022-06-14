@@ -1,10 +1,22 @@
 import React from "react";
 
-function YouShallNotPass(){
-    return(
+function YouShallNotPass() {
+    return (
         <div className={"App"}>
-            <div style={{display: "flex",  justifyContent:"center", alignItems:"center"}}>
-                <iframe allow="fullscreen" frameBorder="0" height="270" src="https://giphy.com/embed/BZMggpshzrPvbfQHIF/video" width="480"/>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center"
+                }}
+            >
+                <iframe
+                    allow="fullscreen"
+                    frameBorder="0"
+                    height="270"
+                    src="https://giphy.com/embed/BZMggpshzrPvbfQHIF/video"
+                    width="480"
+                />
             </div>
         </div>
     );

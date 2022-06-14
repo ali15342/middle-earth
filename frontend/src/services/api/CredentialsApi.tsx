@@ -1,14 +1,25 @@
-import axios, {AxiosResponse} from "axios";
+import axios, { AxiosResponse } from "axios";
 import Profile from "../../components/pages/Profile";
 
-const {REACT_APP_BASE_URL} = process.env;
+const { REACT_APP_BASE_URL } = process.env;
 const userBaseApi = `${REACT_APP_BASE_URL}/api/user`;
-const headers = {headers: {"Content-Type": "application/json", "mode": "no-cors", "AccessControlAllowOrigin": "*", "Authorization": `Bearer ${localStorage.getItem("jwt")}`}};
+const headers = {
+    headers: {
+        "Content-Type": "application/json",
+        mode: "no-cors",
+        AccessControlAllowOrigin: "*",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`
+    }
+};
 
 export const credentialsApi = () => {
     const updateCredentials = (profile: Profile): Promise<AxiosResponse> => {
-        return axios.patch(`${userBaseApi}/updateCredentials`, profile, headers);
+        return axios.patch(
+            `${userBaseApi}/updateCredentials`,
+            profile,
+            headers
+        );
     };
 
-    return {updateCredentials};
+    return { updateCredentials };
 };

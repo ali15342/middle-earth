@@ -4,7 +4,6 @@ import "./css/index.sss";
 import App from "./App";
 import { Toaster } from "react-hot-toast";
 
-
 ReactDOM.render(
     <React.StrictMode>
         <App />

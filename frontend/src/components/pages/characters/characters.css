@@ -6,7 +6,8 @@
     margin-bottom: 40px;
 }
 
-h1, h2 {
+h1,
+h2 {
     color: rgb(7, 36, 46);
     padding: 20px;
 }
@@ -17,20 +18,20 @@ h1, h2 {
 
 @media only screen and (max-width: 1100px) {
     .characterContent {
-      top:40px;
-      margin-top: -40px;
+        top: 40px;
+        margin-top: -40px;
     }
-  }
+}
 
 /* This is how u do responsive css, use media queries */
 @media only screen and (max-width: 750px) {
     .characterContent {
-      max-width: 60%;
+        max-width: 60%;
     }
-  }
+}
 
 @media only screen and (max-width: 700px) {
     .characterContent {
-      max-width: 80%;
+        max-width: 80%;
     }
-  }
+}

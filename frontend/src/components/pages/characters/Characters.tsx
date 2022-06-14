@@ -1,4 +1,3 @@
-import Navbar from "../../navbar/Navbar";
 import Character from "./Character";
 import "./characters.css";
 import React, { useState } from "react";

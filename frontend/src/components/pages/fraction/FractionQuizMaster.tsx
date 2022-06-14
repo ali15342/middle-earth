@@ -68,7 +68,9 @@ function FractionQuizMaster() {
                     fraction: FractionEnum[highestPointsFraction]
                 },
                 headers
-            );
+            ).then(res => {
+                console.log(res);
+            });
         }
     }
 

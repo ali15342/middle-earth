@@ -33,7 +33,7 @@ const FractionQuiz: React.FC<QuizParameters> = ({
         } else {
             toast.error("Please select an answer", {
                 position: "top-right",
-                duration: 3000,
+                duration: 3000
             });
         }
     }

@@ -271,5 +271,185 @@ export const FractionQuestions: FractionQuestionModel[] = [
                 ]
             }
         ]
+    },
+    {
+        id: 4,
+        question: "Which mount would you prefer?",
+        answers: [
+            {
+                id: 1,
+                answer: "Goat",
+                points: [
+                    {
+                        fraction: FractionEnum.DWARF,
+                        point: 3
+                    },
+                    {
+                        fraction: FractionEnum.HUMAN,
+                        point: 1
+                    }
+                ]
+            },
+            {
+                id: 2,
+                answer: "Eagle",
+                points: [
+                    {
+                        fraction: FractionEnum.MAGE,
+                        point: 3
+                    },
+                    {
+                        fraction: FractionEnum.ELF,
+                        point: 1
+                    }
+                ]
+            },
+            {
+                id: 3,
+                answer: "Boar",
+                points: [
+                    {
+                        fraction: FractionEnum.ORC,
+                        point: 3
+                    },
+                    {
+                        fraction: FractionEnum.DWARF,
+                        point: 1
+                    }
+                ]
+            },
+            {
+                id: 4,
+                answer: "Horse",
+                points: [
+                    {
+                        fraction: FractionEnum.HUMAN,
+                        point: 3
+                    },
+                    {
+                        fraction: FractionEnum.ELF,
+                        point: 1
+                    }
+                ]
+            },
+            {
+                id: 5,
+                answer: "Elk",
+                points: [
+                    {
+                        fraction: FractionEnum.HOBBIT,
+                        point: 3
+                    },
+                    {
+                        fraction: FractionEnum.MAGE,
+                        point: 1
+                    }
+                ]
+            },
+            {
+                id: 6,
+                answer: "Wolf",
+                points: [
+                    {
+                        fraction: FractionEnum.ELF,
+                        point: 3
+                    },
+                    {
+                        fraction: FractionEnum.ORC,
+                        point: 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        id: 5,
+        question: "Your favorite place for vacation?",
+        answers: [
+            {
+                id: 1,
+                answer: "Beach",
+                points: [
+                    {
+                        fraction: FractionEnum.HUMAN,
+                        point: 3
+                    },
+                    {
+                        fraction: FractionEnum.HOBBIT,
+                        point: 1
+                    }
+                ]
+            },
+            {
+                id: 2,
+                answer: "Mountains",
+                points: [
+                    {
+                        fraction: FractionEnum.DWARF,
+                        point: 3
+                    },
+                    {
+                        fraction: FractionEnum.MAGE,
+                        point: 1
+                    }
+                ]
+            },
+            {
+                id: 3,
+                answer: "Forest",
+                points: [
+                    {
+                        fraction: FractionEnum.MAGE,
+                        point: 3
+                    },
+                    {
+                        fraction: FractionEnum.HUMAN,
+                        point: 1
+                    }
+                ]
+            },
+            {
+                id: 4,
+                answer: "Farm",
+                points: [
+                    {
+                        fraction: FractionEnum.HOBBIT,
+                        point: 3
+                    },
+                    {
+                        fraction: FractionEnum.ORC,
+                        point: 1
+                    }
+                ]
+            },
+            {
+                id: 5,
+                answer: "Cave",
+                points: [
+                    {
+                        fraction: FractionEnum.ELF,
+                        point: 3
+                    },
+                    {
+                        fraction: FractionEnum.DWARF,
+                        point: 1
+                    }
+                ]
+            },
+            {
+                id: 6,
+                answer: "Desert",
+                points: [
+                    {
+                        fraction: FractionEnum.ORC,
+                        point: 3
+                    },
+                    {
+                        fraction: FractionEnum.ELF,
+                        point: 1
+                    }
+                ]
+            }
+        ]
     }
 ];
