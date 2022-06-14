@@ -20,6 +20,7 @@ import javax.validation.Valid;
  * Every request is sent to a different route
  * This controller manages: user activation, login, registration, password reset & logout
  */
+
 @RestController
 @Validated
 @CrossOrigin

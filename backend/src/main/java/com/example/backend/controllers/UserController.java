@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+/**
+ * The user controller receives all incoming JSON objects from the frontend. We call the services to process the data
+ * */
+
 @RestController
 @Validated
 @CrossOrigin

@@ -2,6 +2,10 @@ package com.example.backend.dto.response;
 
 import com.twitter.clientlib.model.MultiTweetLookupResponse;
 
+/**
+ * This is the data transfer object for the twitter response
+ * */
+
 public class TwitterResponseDto {
     MultiTweetLookupResponse response;
 

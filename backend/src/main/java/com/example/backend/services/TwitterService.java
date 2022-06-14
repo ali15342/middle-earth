@@ -9,7 +9,6 @@ import com.twitter.clientlib.model.ResourceUnauthorizedProblem;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -20,9 +19,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * TwitterService to retrieve tweets from Twitter API
+ */
+
 @Service
 public class TwitterService {
     private TwitterResponseDto twitterResponseDto = null;
+
     @Value("${bearerToken}")
     private String bearerToken;
 
@@ -45,8 +49,6 @@ public class TwitterService {
             HttpEntity<Void> entity = new HttpEntity<>(headers);
 
             MultiTweetLookupResponse response = (new RestTemplate().exchange("https://api.twitter.com/2/tweets/search/recent?query=lotr", HttpMethod.GET, entity, MultiTweetLookupResponse.class)).getBody();
-
-            // https://api.twitter.com/2/tweets/search/recent?query=lotr
 
             List<String> tweetIds = new ArrayList<>();
 
