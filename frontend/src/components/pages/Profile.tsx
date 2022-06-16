@@ -56,6 +56,10 @@ function Profile() {
             });
     };
 
+    const imgUrl =
+        username.role.toLocaleLowerCase() ??
+        username.role.authority.toLocaleLowerCase();
+
     return (
         <div>
             <Box
@@ -77,10 +81,24 @@ function Profile() {
                     }}
                 >
                     <div className="App">
-                        <h2 className="">Welcome {username.username}</h2>
+                        <h2 className="">{username.username}</h2>
+                        <h3 className={""}>
+                            Race{" "}
+                            {username.role.authority ??
+                                username.role.toLocaleLowerCase()}
+                        </h3>
+                        <img
+                            src={"../fractions/" + imgUrl + ".jpg"}
+                            style={{
+                                width: "20vw",
+                                height: "20vh",
+                                margin: "inherit",
+                                position: "relative"
+                            }}
+                        />
                         <hr />
                         <h1 className="">Change your profile details</h1>
-                        <div style={{ marginBottom: "20px" }}></div>
+                        <div style={{ marginBottom: "20px" }} />
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form">
                                 <TextField

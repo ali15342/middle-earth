@@ -1,8 +1,10 @@
 import axios, { AxiosResponse } from "axios";
 import Profile from "../../components/pages/Profile";
+import { FractionEnum } from "../../components/pages/fraction/FractionEnum";
 
 const { REACT_APP_BASE_URL } = process.env;
 const userBaseApi = `${REACT_APP_BASE_URL}/api/user`;
+const fractionApiUrl = `${REACT_APP_BASE_URL}/api/user/fraction`;
 const headers = {
     headers: {
         "Content-Type": "application/json",
@@ -20,6 +22,18 @@ export const credentialsApi = () => {
             headers
         );
     };
-
     return { updateCredentials };
+};
+
+export const updateFraction = () => {
+    const updateFraction = (fraction: FractionEnum): Promise<AxiosResponse> => {
+        return axios.put(
+            fractionApiUrl,
+            {
+                fraction: FractionEnum[fraction]
+            },
+            headers
+        );
+    };
+    return { updateFraction };
 };

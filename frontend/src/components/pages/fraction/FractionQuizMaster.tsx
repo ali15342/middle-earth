@@ -3,8 +3,10 @@ import { FractionQuestions } from "./FractionQuestion";
 import FractionQuiz from "./FractionQuiz";
 import { FractionPointModel } from "./FractionQuestionModel";
 import { FractionEnum } from "./FractionEnum";
-import axios from "axios";
+import {AxiosResponse} from "axios";
 import FadeIn from "react-fade-in";
+import { showErrorToast } from "../../../helper/show-toast";
+import { updateFraction } from "../../../services/api/CredentialsApi";
 
 function FractionQuizMaster() {
     const [pageIndex, setPageIndex] = useState(1);
@@ -51,26 +53,18 @@ function FractionQuizMaster() {
 
             setResultFraction(FractionEnum[highestPointsFraction]);
 
-            const { REACT_APP_BASE_URL } = process.env;
-            const fractionApiUrl = `${REACT_APP_BASE_URL}/api/user/fraction`;
-            const headers = {
-                headers: {
-                    "Content-Type": "application/json",
-                    mode: "no-cors",
-                    AccessControlAllowOrigin: "*",
-                    Authorization: `Bearer ${localStorage.getItem("jwt")}`
-                }
-            };
-
-            await axios.put(
-                fractionApiUrl,
-                {
-                    fraction: FractionEnum[highestPointsFraction]
-                },
-                headers
-            ).then(res => {
-                console.log(res);
-            });
+            const updateFractionApi = updateFraction();
+            await updateFractionApi
+                .updateFraction(highestPointsFraction)
+                .then((res: AxiosResponse) => {
+                    console.log(res);
+                    localStorage.removeItem("jwt");
+                    localStorage.setItem("jwt", res.data.jwt);
+                })
+                .catch((exception: AxiosResponse) => {
+                    showErrorToast("error");
+                    console.log(exception);
+                });
         }
     }
 

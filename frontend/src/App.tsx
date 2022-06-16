@@ -58,7 +58,7 @@ function App() {
                 <Route
                     path="/fraction"
                     element={
-                        localStorage.getItem("fraction") === null ? (
+                        localStorage.getItem("jwt") !== null ? (
                             <FractionQuizMaster />
                         ) : (
                             <YouShallNotPass />

@@ -44,7 +44,7 @@ function NavLinks() {
                     </Link>
                 </li>
             ) : null}
-            {localStorage.getItem("fraction") == null ? (
+            {localStorage.getItem("jwt") != null ? (
                 <li>
                     <Link className="navbar-brand boldText" to="/fraction">
                         Fraction
