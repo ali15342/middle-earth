@@ -5,6 +5,7 @@ import com.example.backend.dto.request.RegistrationRequestDto;
 import com.example.backend.dto.request.UserRequestDto;
 import com.example.backend.dto.response.LoginResponseDto;
 import com.example.backend.dto.response.RegistrationResponseDto;
+import com.example.backend.dto.response.UpdateFractionResponseDto;
 import com.example.backend.dto.response.UserResponseDto;
 import com.example.backend.models.FractionEnum;
 import com.example.backend.models.User;
@@ -123,14 +124,18 @@ public class UserService {
         return new UserResponseDto(jwt);
     }
 
-    public void updateUserFraction(String username, FractionEnum fraction){
+    public UpdateFractionResponseDto updateUserFraction(String username, FractionEnum fraction){
         User user = userRepository.getUserByUsername(username);
 
         if (user.getFraction() != FractionEnum.DEFAULT) {
-            return;
+            return null;
         }
 
         user.setFraction(fraction);
         userRepository.save(user);
+
+        String jwt = this.jwtService.generateNewJwtToken(user);
+
+        return new UpdateFractionResponseDto(jwt);
     }
 }

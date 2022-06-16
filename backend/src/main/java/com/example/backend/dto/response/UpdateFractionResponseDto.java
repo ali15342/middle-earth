@@ -1,5 +1,9 @@
 package com.example.backend.dto.response;
 
+/**
+ * This is the data transfer object for the update fraction response
+ * */
+
 public class UpdateFractionResponseDto {
     private String jwt;
 

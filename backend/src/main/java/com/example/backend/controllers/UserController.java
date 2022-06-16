@@ -2,6 +2,7 @@ package com.example.backend.controllers;
 
 import com.example.backend.dto.request.UpdateFractionRequestDto;
 import com.example.backend.dto.request.UserRequestDto;
+import com.example.backend.dto.response.UpdateFractionResponseDto;
 import com.example.backend.dto.response.UserResponseDto;
 import com.example.backend.helper.JwtHelper;
 import com.example.backend.security.JwtService;
@@ -50,8 +51,12 @@ public class UserController {
         var jwtToken = JwtHelper.parseJwt(request);
         var username = jwtService.getUserNameFromJwtToken(jwtToken);
 
-        userService.updateUserFraction(username, updateFractionRequestDto.fraction);
+        UpdateFractionResponseDto updateFractionResponseDto = userService.updateUserFraction(username, updateFractionRequestDto.fraction);
 
-        return new ResponseEntity(HttpStatus.OK);
+        if(updateFractionResponseDto == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(updateFractionResponseDto, HttpStatus.OK);
     }
 }
