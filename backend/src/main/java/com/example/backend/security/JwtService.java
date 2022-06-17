@@ -1,5 +1,6 @@
 package com.example.backend.security;
 
+import com.example.backend.models.FractionEnum;
 import com.example.backend.models.JwtBlackList;
 import com.example.backend.models.User;
 import com.example.backend.repositories.JwtBlackListRepository;
@@ -26,17 +27,19 @@ public class JwtService {
         this.jwtBlackListRepository = jwtBlackListRepository;
     }
 
-    public String generateJwtToken(Authentication authentication) {
+    public String generateJwtToken(Authentication authentication, FractionEnum fraction) {
         SpringUserDetails userPrincipal = (SpringUserDetails) authentication.getPrincipal();
 
         var role = userPrincipal.getAuthorities();
+
+
 
         String token = Jwts.builder()
                 .setSubject((userPrincipal.getUsername()))
                 .setIssuedAt(new Date())
                 .addClaims(new HashMap<String, Object>() {{
                     put("user_id", userPrincipal.getId());
-                    put("role", role.toArray()[0]);
+                    put("role", fraction.toString());
                     put("username", userPrincipal.getUsername());
                     put("email", userPrincipal.getEmail());
                 }})

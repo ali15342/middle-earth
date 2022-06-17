@@ -83,7 +83,7 @@ public class UserService {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequestDto.getUsername(), loginRequestDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = this.jwtService.generateJwtToken(authentication);
+        String jwt = this.jwtService.generateJwtToken(authentication, dbUser.getFraction());
 
         return new LoginResponseDto(jwt);
     }
