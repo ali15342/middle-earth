@@ -14,13 +14,13 @@ function MyComponent() {
     const [showMarker, setShowMarker] = useState(false);
 
     const map = useMapEvent("zoom", (ev) => {
-        // hier alle svgs löschen
         setShowMarker(false);
         switch (ev.target.getZoom()) {
             case 1:
                 setShowMarker(true);
                 break;
             case 2:
+
                 break;
             case 3:
                 break;
@@ -29,9 +29,9 @@ function MyComponent() {
         }
     });
 
-    return showMarker === false ? null : (
+    return !showMarker ? null : (
         <Marker position={[30.7, 0.2]}>
-            <Popup>You are here</Popup>
+            <Popup>Alex</Popup>
         </Marker>
     );
 }
@@ -48,9 +48,7 @@ function Map() {
                 style={{ height: "100%", width: "100%" }}
             >
                 <MyComponent />
-                <TileLayer
-                    url="/tiles/{z}/{x}/{y}.jpg"
-                />
+                <TileLayer url="/tiles/{z}/{x}/{y}.jpg" />
             </MapContainer>
         </div>
     );

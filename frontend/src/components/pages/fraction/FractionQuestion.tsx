@@ -39,7 +39,7 @@ export const FractionQuestions: FractionQuestionModel[] = [
                 answer: "A staff",
                 points: [
                     {
-                        fraction: FractionEnum.MAGE,
+                        fraction: FractionEnum.WIZARD,
                         point: 3
                     },
                     {
@@ -85,7 +85,7 @@ export const FractionQuestions: FractionQuestionModel[] = [
                         point: 3
                     },
                     {
-                        fraction: FractionEnum.MAGE,
+                        fraction: FractionEnum.WIZARD,
                         point: 1
                     }
                 ]
@@ -119,7 +119,7 @@ export const FractionQuestions: FractionQuestionModel[] = [
                         point: 3
                     },
                     {
-                        fraction: FractionEnum.MAGE,
+                        fraction: FractionEnum.WIZARD,
                         point: 1
                     }
                 ]
@@ -129,7 +129,7 @@ export const FractionQuestions: FractionQuestionModel[] = [
                 answer: "Blue",
                 points: [
                     {
-                        fraction: FractionEnum.MAGE,
+                        fraction: FractionEnum.WIZARD,
                         point: 3
                     },
                     {
@@ -219,7 +219,7 @@ export const FractionQuestions: FractionQuestionModel[] = [
                 answer: "Cocktail",
                 points: [
                     {
-                        fraction: FractionEnum.MAGE,
+                        fraction: FractionEnum.WIZARD,
                         point: 3
                     },
                     {
@@ -251,7 +251,7 @@ export const FractionQuestions: FractionQuestionModel[] = [
                         point: 3
                     },
                     {
-                        fraction: FractionEnum.MAGE,
+                        fraction: FractionEnum.WIZARD,
                         point: 1
                     }
                 ]
@@ -295,7 +295,7 @@ export const FractionQuestions: FractionQuestionModel[] = [
                 answer: "Eagle",
                 points: [
                     {
-                        fraction: FractionEnum.MAGE,
+                        fraction: FractionEnum.WIZARD,
                         point: 3
                     },
                     {
@@ -341,7 +341,7 @@ export const FractionQuestions: FractionQuestionModel[] = [
                         point: 3
                     },
                     {
-                        fraction: FractionEnum.MAGE,
+                        fraction: FractionEnum.WIZARD,
                         point: 1
                     }
                 ]
@@ -389,7 +389,7 @@ export const FractionQuestions: FractionQuestionModel[] = [
                         point: 3
                     },
                     {
-                        fraction: FractionEnum.MAGE,
+                        fraction: FractionEnum.WIZARD,
                         point: 1
                     }
                 ]
@@ -399,7 +399,7 @@ export const FractionQuestions: FractionQuestionModel[] = [
                 answer: "Forest",
                 points: [
                     {
-                        fraction: FractionEnum.MAGE,
+                        fraction: FractionEnum.WIZARD,
                         point: 3
                     },
                     {

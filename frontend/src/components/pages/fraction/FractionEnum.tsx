@@ -1,7 +1,7 @@
 export enum FractionEnum {
     DWARF,
     ELF,
-    MAGE,
+    WIZARD,
     HUMAN,
     ORC,
     HOBBIT
