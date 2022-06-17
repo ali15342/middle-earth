@@ -4,7 +4,7 @@ public enum FractionEnum {
     DEFAULT,
     DWARF,
     ELF,
-    MAGE,
+    WIZARD,
     HUMAN,
     ORC,
     HOBBIT
