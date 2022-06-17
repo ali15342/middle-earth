@@ -55,8 +55,9 @@ function Profile() {
                 console.log(exception);
             });
     };
+    console.log(username);
 
-    const imgUrl = username.role.authority.toLocaleLowerCase();
+    const role = username.role.toLocaleLowerCase();
 
     const aboutUrl = "/about";
 
@@ -82,11 +83,9 @@ function Profile() {
                 >
                     <div className="App">
                         <h2 className="">{username.username}</h2>
-                        <h3 className={""}>
-                            Race {username.role.authority.toLocaleLowerCase()}
-                        </h3>
+                        <h3 className={""}>Race {role}</h3>
                         <img
-                            src={"../fractions/" + imgUrl + ".jpg"}
+                            src={"../fractions/" + role + ".jpg"}
                             style={{
                                 width: "20vw",
                                 height: "20vh",
@@ -94,13 +93,15 @@ function Profile() {
                                 position: "relative"
                             }}
                         />
-                        <br/>
-                        <a
-                            className={"App"}
-                            href={aboutUrl + "/" + username.role.authority.toLocaleLowerCase()}
-                        >
-                            Find out more about your race
+                        <br />
+                        <label>
+                            Find out more about your race&nbsp;
+                        </label>
+                        <u>
+                        <a style={{color: "black", fontSize: "16px"}} href={aboutUrl + "/" + role}>
+                            here
                         </a>
+                        </u>
                         <hr />
                         <h1 className="">Change your profile details</h1>
                         <div style={{ marginBottom: "20px" }} />

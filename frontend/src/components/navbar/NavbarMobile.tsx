@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavLinks from "./NavLinks";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
+import "./navbar.css";
 
 function NavbarMobile() {
     const [open, setOpen] = useState(false);

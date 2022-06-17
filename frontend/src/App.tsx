@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import About from "./components/pages/about/About";
 import Home from "./components/pages/Home";
 import Characters from "./components/pages/characters/Characters";
-import MapPage from "./components/pages/MapPage";
+import MapPage from "./components/pages/map/MapPage";
 import Error404 from "./components/pages/Error404";
 import Login from "./components/pages/authentication/Login";
 import Register from "./components/pages/authentication/Registration";
