@@ -26,7 +26,7 @@ function NavLinks() {
                 </Link>
             </li>
             <li>
-                <Link className="navbar-brand boldText" to="/about">
+                <Link className="navbar-brand boldText" to="/about/us">
                     About
                 </Link>
             </li>

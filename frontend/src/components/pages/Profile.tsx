@@ -56,9 +56,9 @@ function Profile() {
             });
     };
 
-    const imgUrl =
-        username.role.toLocaleLowerCase() ??
-        username.role.authority.toLocaleLowerCase();
+    const imgUrl = username.role.authority.toLocaleLowerCase();
+
+    const aboutUrl = "/about";
 
     return (
         <div>
@@ -83,9 +83,7 @@ function Profile() {
                     <div className="App">
                         <h2 className="">{username.username}</h2>
                         <h3 className={""}>
-                            Race{" "}
-                            {username.role.authority ??
-                                username.role.toLocaleLowerCase()}
+                            Race {username.role.authority.toLocaleLowerCase()}
                         </h3>
                         <img
                             src={"../fractions/" + imgUrl + ".jpg"}
@@ -96,6 +94,13 @@ function Profile() {
                                 position: "relative"
                             }}
                         />
+                        <br/>
+                        <a
+                            className={"App"}
+                            href={aboutUrl + "/" + username.role.authority.toLocaleLowerCase()}
+                        >
+                            Find out more about your race
+                        </a>
                         <hr />
                         <h1 className="">Change your profile details</h1>
                         <div style={{ marginBottom: "20px" }} />
