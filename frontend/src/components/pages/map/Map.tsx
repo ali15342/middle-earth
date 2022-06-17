@@ -46,17 +46,8 @@ function Map() {
         setHobbitRoute(!hobbitRoute);
     }
 
-    function callTest() {
-        console.log("mordor clicked2");
-    }
-
     function onLegolasGimliRouteClick() {
         setDwarfRoute(!dwarfRoute);
-        document
-            .getElementById("mordorSVG")!
-            .addEventListener("click", function () {
-                console.log("mordor clicked");
-            });
     }
 
     return (
