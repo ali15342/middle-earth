@@ -1,6 +1,9 @@
 import {
+    Circle,
+    ImageOverlay,
     MapContainer,
     Marker,
+    Polyline,
     Popup,
     SVGOverlay,
     TileLayer,
@@ -14,13 +17,11 @@ function MyComponent() {
     const [showMarker, setShowMarker] = useState(false);
 
     const map = useMapEvent("zoom", (ev) => {
-        setShowMarker(false);
+        setShowMarker(true);
         switch (ev.target.getZoom()) {
             case 1:
-                setShowMarker(true);
                 break;
             case 2:
-
                 break;
             case 3:
                 break;
@@ -29,16 +30,12 @@ function MyComponent() {
         }
     });
 
-    return !showMarker ? null : (
-        <Marker position={[30.7, 0.2]}>
-            <Popup>Alex</Popup>
-        </Marker>
-    );
+    return null;
 }
 
 function Map() {
     return (
-        <div style={{ width: "50vw", height: "70vh" }}>
+        <div style={{ width: "800px", height: "500px" }}>
             <MapContainer
                 center={[1, 1]}
                 zoom={1}
@@ -48,7 +45,21 @@ function Map() {
                 style={{ height: "100%", width: "100%" }}
             >
                 <MyComponent />
-                <TileLayer url="/tiles/{z}/{x}/{y}.jpg" />
+               <ImageOverlay
+                    bounds={[
+                        [-200, -100],
+                        [100, 100]
+                    ]}
+                    url={"/map/frodo-sam-path.svg"}
+                />
+                <ImageOverlay
+                    bounds={[
+                        [-200, -100],
+                        [100, 100]
+                    ]}
+                    url={"/map/legolas-gimli-path.svg"}
+                />
+                <TileLayer noWrap={true} url="/tiles/{z}/{x}/{y}.jpg" />
             </MapContainer>
         </div>
     );
