@@ -22,7 +22,7 @@ function NavLinks() {
                 </Link>
             </li>
             <li>
-                <Link className="navbar-brand boldText" to="/map">
+                <Link className={currentPage.pathname.includes("/map") ? "navbar-brand boldText currentPageHighlight" : "navbar-brand boldText"} to="/map">
                     Map
                 </Link>
             </li>
