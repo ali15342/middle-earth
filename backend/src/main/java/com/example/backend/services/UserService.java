@@ -138,4 +138,12 @@ public class UserService {
 
         return new UpdateFractionResponseDto(jwt);
     }
+
+    public void deleteAccount(String username, String jwt) {
+        User user = userRepository.getUserByUsername(username);
+
+        jwtService.blacklistJwt(jwt);
+
+        userRepository.delete(user);
+    }
 }

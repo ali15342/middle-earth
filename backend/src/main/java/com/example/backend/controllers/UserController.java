@@ -59,4 +59,14 @@ public class UserController {
 
         return new ResponseEntity<>(updateFractionResponseDto, HttpStatus.OK);
     }
+
+    @DeleteMapping(value = "/deleteAccount")
+    public ResponseEntity deleteAccount(HttpServletRequest request, @Valid @RequestBody UserRequestDto userRequestDto){
+        var jwtToken = JwtHelper.parseJwt(request);
+        var username = jwtService.getUserNameFromJwtToken(jwtToken);
+
+        userService.deleteAccount(username, jwtToken);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
