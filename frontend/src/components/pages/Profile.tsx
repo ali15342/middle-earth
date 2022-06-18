@@ -86,8 +86,8 @@ function Profile() {
                     }}
                 >
                     <div className="App">
-                        <h2 className="">{username.username}</h2>
-                        <h3 className={""}>Race {role}</h3>
+                    <h2 className="">{username.username}</h2>
+                        {role !== "default" ?   <> <h3 className={""}>Race {role}</h3>
                         <img
                             src={"../fractions/" + role + ".jpg"}
                             style={{
@@ -105,7 +105,8 @@ function Profile() {
                         <a style={{color: "black", fontSize: "16px", fontStyle:"bold", textDecoration:"underline"}} href={aboutUrl + "/" + role}>
                             here
                         </a>
-                        </u>
+                        </u></> : <></> }
+                     
                         <hr />
                         <h1 className="">Change your profile details</h1>
                         <div style={{ marginBottom: "20px" }} />

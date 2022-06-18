@@ -6,7 +6,9 @@ function About() {
     return (
         <div>
             <div>
-                <h1>About us</h1>
+                {currentPath === "/about/us" ? (
+                    <>
+                        <h1>About us</h1>
                 <p className="text-center">
                     We are a group of 3 students who have been working on this
                     project for the last few months. We are happy to share it
@@ -20,6 +22,10 @@ function About() {
                     <li>Latest tweets</li>
                     <li>Find out which character you are</li>
                 </div>
+                    </>
+                ) : (
+                    <></>
+                )}
                 {currentPath === "/about/elf" ? (
                     <>
                         <h1> About you </h1>

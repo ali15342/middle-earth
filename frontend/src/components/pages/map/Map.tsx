@@ -51,7 +51,7 @@ function Map() {
     }
 
     return (
-        <div>
+        <div style={{textAlign:"center"}}>
             <p>Paths of:</p>
             <p>
                 <Checkbox onClick={() => onHobbitRouteClick()} />
@@ -61,7 +61,7 @@ function Map() {
                 <Checkbox onClick={() => onLegolasGimliRouteClick()} />
                 Legolas & Gimli
             </p>
-            <div style={{ width: "800px", height: "500px", textAlign:"center"}}>
+            <div style={{margin:"0 auto", width: "800px", height: "500px", textAlign:"center"}}>
             <MapContainer
                 center={[1, 1]}
                 zoom={1}
