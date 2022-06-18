@@ -1,9 +1,10 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { authenticationApi } from "../../services/api/AuthenticationApi";
 
 function NavLinks() {
     const navigate = useNavigate();
+    const currentPage = useLocation();
     const logout = async () => {
         await authenticationApi()
             .logout()
@@ -26,34 +27,34 @@ function NavLinks() {
                 </Link>
             </li>
             <li>
-                <Link className="navbar-brand boldText" to="/about/us">
+                <Link className={currentPage.pathname.includes("/about") ? "navbar-brand boldText currentPageHighlight" : "navbar-brand boldText"} to="/about/us">
                     About
                 </Link>
             </li>
             {localStorage.getItem("jwt") != null ? (
                 <li>
-                    <Link className="navbar-brand boldText" to="/characters">
+                    <Link className={currentPage.pathname.includes("/characters") ? "navbar-brand boldText currentPageHighlight" : "navbar-brand boldText"} to="/characters">
                         Characters
                     </Link>
                 </li>
             ) : null}
             {localStorage.getItem("jwt") != null ? (
                 <li>
-                    <Link className="navbar-brand boldText" to="/profile">
+                    <Link className={currentPage.pathname.includes("/profile") ? "navbar-brand boldText currentPageHighlight" : "navbar-brand boldText"} to="/profile">
                         Profile
                     </Link>
                 </li>
             ) : null}
             {localStorage.getItem("jwt") != null ? (
                 <li>
-                    <Link className="navbar-brand boldText" to="/fraction">
+                    <Link className={currentPage.pathname.includes("/fraction") ? "navbar-brand boldText currentPageHighlight" : "navbar-brand boldText"} to="/fraction">
                         Fraction
                     </Link>
                 </li>
             ) : null}
             {localStorage.getItem("jwt") != null ? (
                 <li>
-                    <Link className="navbar-brand boldText" to="/tweets">
+                    <Link className={currentPage.pathname.includes("/tweets") ? "navbar-brand boldText currentPageHighlight" : "navbar-brand boldText"} to="/tweets">
                         Tweets
                     </Link>
                 </li>
@@ -72,7 +73,7 @@ function NavLinks() {
                 </li>
             ) : (
                 <li>
-                    <Link className="navbar-brand boldText" to="/login">
+                    <Link className={currentPage.pathname.includes("/login") ? "navbar-brand boldText currentPageHighlight" : "navbar-brand boldText"} to="/login">
                         Login
                     </Link>
                 </li>

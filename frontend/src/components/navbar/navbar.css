@@ -13,6 +13,10 @@
     box-sizing: border-box;
 }
 
+.currentPageHighlight{
+    color: var(--orange)
+}
+
 .content {
     background-image: linear-gradient(var(--blue), var(--lightBlue));
     height: 80px;

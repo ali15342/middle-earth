@@ -10,8 +10,8 @@ function Home() {
                 <br></br>
                 <h1>Welcome to Middle Earth Maps</h1>
                 <p>Explore the world of middle earth with our map.</p>
-                <Link to="../register" className="btn btn-primary App">
-                    Register
+                <Link to="../map" className="btn btn-primary App">
+                   Go to Map
                 </Link>
             </div>
         </div>

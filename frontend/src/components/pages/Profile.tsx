@@ -91,8 +91,8 @@ function Profile() {
                         <img
                             src={"../fractions/" + role + ".jpg"}
                             style={{
-                                width: "20vw",
-                                height: "20vh",
+                                width: "80%",
+                                maxWidth:"550px",
                                 margin: "inherit",
                                 position: "relative"
                             }}
@@ -108,7 +108,7 @@ function Profile() {
                         </u></> : <></> }
                      
                         <hr />
-                        <h1 className="">Change your profile details</h1>
+                        <p className="">Change your profile details</p>
                         <div style={{ marginBottom: "20px" }} />
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form">
@@ -155,6 +155,7 @@ function Profile() {
                                 />                                
                             </div>
                         </form>
+                        <br/>
                             <input
                                     className={"btn btn-primary App"}
                                     type={"button"}
@@ -162,7 +163,7 @@ function Profile() {
                                     onClick = {() => deleteAccout(localStorage.getItem("jwt")!)}
                                 />
                         <hr />
-                        <h2>Test your nerd level</h2>
+                        <h3>Test your nerd level</h3>
                         {!isMounted ? (
                             <input
                                 className={"btn btn-primary App"}
