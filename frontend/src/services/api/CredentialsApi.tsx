@@ -5,6 +5,7 @@ import { FractionEnum } from "../../components/pages/fraction/FractionEnum";
 const { REACT_APP_BASE_URL } = process.env;
 const userBaseApi = `${REACT_APP_BASE_URL}/api/user`;
 const fractionApiUrl = `${REACT_APP_BASE_URL}/api/user/fraction`;
+
 const headers = {
     headers: {
         "Content-Type": "application/json",
@@ -36,4 +37,14 @@ export const updateFraction = () => {
         );
     };
     return { updateFraction };
+};
+
+export const deleteAccount = () => {
+    const deleteAccount = (jwt: string): Promise<AxiosResponse> => {
+        return axios.delete(
+            `${userBaseApi}/deleteAccount`,
+            headers
+        );
+    };
+    return { deleteAccount };
 };

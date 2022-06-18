@@ -6,7 +6,7 @@ import jwtDecode from "jwt-decode";
 import TextField from "@material-ui/core/TextField";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { showErrorToast, showToast } from "../../helper/show-toast";
-import { credentialsApi } from "../../services/api/CredentialsApi";
+import { credentialsApi, deleteAccount } from "../../services/api/CredentialsApi";
 import QuizMaster from "./quiz/QuizMaster";
 
 interface jwtToken {
@@ -28,6 +28,7 @@ type UserCredentials = {
 function Profile() {
     let username: any = {};
     const defaultUserApi = credentialsApi();
+    const defaultDeleteUserApi = deleteAccount();
     const [isMounted, setIsMounted] = useState(false);
 
     const token = localStorage.getItem("jwt");
@@ -55,7 +56,10 @@ function Profile() {
                 console.log(exception);
             });
     };
-    console.log(username);
+
+    async function deleteAccout(jwt: string) {
+        await defaultDeleteUserApi.deleteAccount(jwt);
+    }
 
     const role = username.role.toLocaleLowerCase();
 
@@ -147,9 +151,15 @@ function Profile() {
                                     className={"btn btn-primary App"}
                                     type={"submit"}
                                     value={"Change Data"}
-                                />
+                                />                                
                             </div>
                         </form>
+                            <input
+                                    className={"btn btn-primary App"}
+                                    type={"button"}
+                                    value={"Delete Account"}
+                                    onClick = {() => deleteAccout(localStorage.getItem("jwt")!)}
+                                />
                         <hr />
                         <h2>Test your nerd level</h2>
                         {!isMounted ? (

@@ -61,7 +61,7 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/deleteAccount")
-    public ResponseEntity deleteAccount(HttpServletRequest request, @Valid @RequestBody UserRequestDto userRequestDto){
+    public ResponseEntity deleteAccount(HttpServletRequest request){
         var jwtToken = JwtHelper.parseJwt(request);
         var username = jwtService.getUserNameFromJwtToken(jwtToken);
 
