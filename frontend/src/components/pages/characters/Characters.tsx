@@ -50,9 +50,10 @@ function Characters() {
 
     return (
         <div>
+             <h1>Characters</h1>
             <div className="characterContent">
                 <div>
-                    <h1>Characters</h1>
+                    
                     <p>
                         Click on one of the icons to get information about a
                         member of the fellowship!

@@ -51,16 +51,17 @@ function Map() {
     }
 
     return (
-        <div style={{ width: "800px", height: "500px" }}>
-            <label>
-                Paths of
+        <div>
+            <p>Paths of:</p>
+            <p>
                 <Checkbox onClick={() => onHobbitRouteClick()} />
                 Frodo & Sam
-            </label>
-            <label>
+            </p>
+            <p>
                 <Checkbox onClick={() => onLegolasGimliRouteClick()} />
                 Legolas & Gimli
-            </label>
+            </p>
+            <div style={{ width: "800px", height: "500px", textAlign:"center"}}>
             <MapContainer
                 center={[1, 1]}
                 zoom={1}
@@ -91,6 +92,8 @@ function Map() {
                 )}
                 <TileLayer noWrap={true} url="/tiles/{z}/{x}/{y}.jpg" />
             </MapContainer>
+            </div>
+       
         </div>
     );
 }

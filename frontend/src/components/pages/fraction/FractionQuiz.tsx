@@ -32,7 +32,7 @@ const FractionQuiz: React.FC<QuizParameters> = ({
             nextPage();
         } else {
             toast.error("Please select an answer", {
-                position: "top-right",
+                position: "top-center",
                 duration: 3000
             });
         }
@@ -44,11 +44,11 @@ const FractionQuiz: React.FC<QuizParameters> = ({
 
     {
         return (
-            <div className="topMargin">
-                <h2 style={{ color: "black" }}>{question}</h2>
+            <div className="textCenter">
+                <h2 className="textCenter" style={{ color: "black" }}>{question}</h2>
                 {shuffeledAnswers.map((data) => (
                     <>
-                        <label style={{ marginRight: "10px" }}>
+                        <label style={{ marginRight: "10px", textAlign: "center"}}>
                             <input
                                 type={"radio"}
                                 value={data.id}

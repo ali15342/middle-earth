@@ -98,7 +98,7 @@ function Profile() {
                             Find out more about your race&nbsp;
                         </label>
                         <u>
-                        <a style={{color: "black", fontSize: "16px"}} href={aboutUrl + "/" + role}>
+                        <a style={{color: "black", fontSize: "16px", fontStyle:"bold", textDecoration:"underline"}} href={aboutUrl + "/" + role}>
                             here
                         </a>
                         </u>

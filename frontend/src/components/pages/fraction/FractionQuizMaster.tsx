@@ -80,7 +80,7 @@ function FractionQuizMaster() {
                 >
                     <hr />
                     <h1 className="mb-1" style={{ color: "black" }}>
-                        Which character are you
+                        Which fraction are you?
                     </h1>
                     {!quizFinished && (
                         <div className="control" style={{ color: "black" }}>
@@ -118,8 +118,7 @@ function FractionQuizMaster() {
                                             ".jpg"
                                         }
                                         style={{
-                                            width: "30vw",
-                                            height: "50vh",
+                                            width:"75%",
                                             margin: "auto"
                                         }}
                                     />
@@ -127,15 +126,16 @@ function FractionQuizMaster() {
                                 <div
                                     style={{
                                         color: "black",
-                                        display: "flex",
-                                        alignItems: "center"
+                                        display: "flex"
                                     }}
                                 >
-                                    <h2>
-                                        Your race{" "}
-                                        {resultFraction?.toLocaleLowerCase()}
-                                    </h2>
+                                    
+                                  
                                 </div>
+                                <h2 style={{textAlign:"center"}}>
+                                        You are a {" "}
+                                        {resultFraction?.toLocaleLowerCase()}!
+                                </h2>
                             </FadeIn>
                         </>
                     )}
