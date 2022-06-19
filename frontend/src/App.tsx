@@ -9,7 +9,7 @@ import MapPage from "./components/pages/map/MapPage";
 import Error404 from "./components/pages/Error404";
 import Login from "./components/pages/authentication/Login";
 import Register from "./components/pages/authentication/Registration";
-import Profile from "./components/pages/Profile";
+import Profile from "./components/pages/profile/Profile";
 import YouShallNotPass from "./components/pages/YouShallNotPass";
 import Tweets from "./components/pages/Tweets";
 import FractionQuizMaster from "./components/pages/fraction/FractionQuizMaster";

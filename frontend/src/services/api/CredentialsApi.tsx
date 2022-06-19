@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import Profile from "../../components/pages/Profile";
+import Profile from "../../components/pages/profile/Profile";
 import { FractionEnum } from "../../components/pages/fraction/FractionEnum";
 
 const { REACT_APP_BASE_URL } = process.env;
@@ -39,12 +39,9 @@ export const updateFraction = () => {
     return { updateFraction };
 };
 
-export const deleteAccount = () => {
-    const deleteAccount = (jwt: string): Promise<AxiosResponse> => {
-        return axios.delete(
-            `${userBaseApi}/deleteAccount`,
-            headers
-        );
+export const deleteUserAccount = () => {
+    const deleteUserAccount = (): Promise<AxiosResponse> => {
+        return axios.delete(`${userBaseApi}/deleteAccount`, headers);
     };
-    return { deleteAccount };
+    return { deleteUserAccount };
 };

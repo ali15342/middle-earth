@@ -5,8 +5,7 @@ import "../../../css/App.css";
 import { authenticationApi } from "../../../services/api/AuthenticationApi";
 import {
     showToast,
-    showErrorToast,
-    showWarningToast
+    showErrorToast
 } from "../../../helper/show-toast";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ToastContainer } from "react-toastify";
@@ -88,7 +87,7 @@ function Login() {
                     </Link>
                 </div>
                 <br />
-                <div style={{ marginBottom: "20px" }}></div>
+                <div style={{marginBottom: "20px"}}/>
             </div>
         </div>
     );

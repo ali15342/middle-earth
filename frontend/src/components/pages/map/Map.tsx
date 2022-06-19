@@ -53,14 +53,14 @@ function Map() {
     return (
         <div style={{textAlign:"center"}}>
             <p>Paths of:</p>
-            <p>
+            <label>
                 <Checkbox onClick={() => onHobbitRouteClick()} />
                 Frodo & Sam
-            </p>
-            <p>
+            </label>
+            <label>
                 <Checkbox onClick={() => onLegolasGimliRouteClick()} />
                 Legolas & Gimli
-            </p>
+            </label>
             <div style={{margin:"0 auto", width: "800px", height: "500px", textAlign:"center"}}>
             <MapContainer
                 center={[1, 1]}
