@@ -16,5 +16,11 @@ export const weatherApi = () => {
     const weatherMordor = (): Promise<AxiosResponse> => {
         return axios.get("https://weatherapi-com.p.rapidapi.com/current.json?q=Baghdad", headers);
     };
-    return { weatherShire, weatherMordor };
+    const weatherRohan = (): Promise<AxiosResponse> => {
+        return axios.get("https://weatherapi-com.p.rapidapi.com/current.json?q=Phoenix", headers);
+    };
+    const weatherGondor = (): Promise<AxiosResponse> => {
+        return axios.get("https://weatherapi-com.p.rapidapi.com/current.json?q=Teheran", headers);
+    };
+    return { weatherShire, weatherMordor, weatherRohan, weatherGondor };
 };

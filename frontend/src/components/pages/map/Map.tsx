@@ -44,13 +44,27 @@ function Map() {
     const [dwarfRoute, setDwarfRoute] = useState(false);
 
     const weather = weatherApi();
-    const [temperatureShireCelsius, setTemperatureShireCelsius] = useState(0);
+
+    const [temperatureShireCelsius, setTemperatureShireCelsius] =
+        useState(0);
     const [temperatureShireFahrenheit, setTemperatureShireFahrenheit] =
         useState(0);
-
     const [temperatureMordorCelsius, setTemperatureMordorCelsius] = useState(0);
     const [temperatureMordorFahrenheit, setTemperatureMordorFahrenheit] =
         useState(0);
+
+    const [temperatureRohanCelsius, setTemperatureRohanCelsius] = useState(0);
+    const [temperatureRohanFahrenheit, setTemperatureRohanFahrenheit] =
+        useState(0);
+
+    const [temperatureGondorCelsius, setTemperatureGondorCelsius] = useState(0);
+    const [temperatureGondorFahrenheit, setTemperatureGondorFahrenheit] =
+        useState(0);
+
+    const [conditionShire, setConditionShire] = useState("");
+    const [conditionMordor, setConditionMordor] = useState("");
+    const [conditionRohan, setConditionRohan] = useState("");
+    const [conditionGondor, setConditionGondor] = useState("");
 
     getWeather();
 
@@ -58,6 +72,8 @@ function Map() {
         await weather
             .weatherShire()
             .then((res) => {
+                console.log(res);
+                setConditionShire(res.data.current.condition.text);
                 setTemperatureShireCelsius(res.data.current.temp_c);
                 setTemperatureShireFahrenheit(res.data.current.temp_f);
             })
@@ -68,8 +84,31 @@ function Map() {
         await weather
             .weatherMordor()
             .then((res) => {
+                setConditionMordor(res.data.current.condition.text);
                 setTemperatureMordorCelsius(res.data.current.temp_c);
                 setTemperatureMordorFahrenheit(res.data.current.temp_f);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
+        await weather
+            .weatherRohan()
+            .then((res) => {
+                setConditionRohan(res.data.current.condition.text);
+                setTemperatureRohanCelsius(res.data.current.temp_c);
+                setTemperatureRohanFahrenheit(res.data.current.temp_f);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
+        await weather
+            .weatherGondor()
+            .then((res) => {
+                setConditionGondor(res.data.current.condition.text);
+                setTemperatureGondorCelsius(res.data.current.temp_c);
+                setTemperatureGondorFahrenheit(res.data.current.temp_f);
             })
             .catch((err) => {
                 console.log(err);
@@ -82,14 +121,6 @@ function Map() {
 
     function onLegolasGimliRouteClick() {
         setDwarfRoute(!dwarfRoute);
-    }
-
-    function weatherDetailsMordor(){
-        const map = useMapEvent("zoom", () => {
-            map.setZoom(3);
-            map.setZoomAround([30, 52], 3);
-        });
-        return null;
     }
 
     return (
@@ -141,16 +172,34 @@ function Map() {
                     )}
                     <TileLayer noWrap={true} url="/tiles/{z}/{x}/{y}.jpg" />
                 </MapContainer>
+                <hr />
                 <div className={"weatherDiv"}>
-                    <label onClick={()=>weatherDetailsMordor()}>
-                            <a style={{color: "white"}}>The Shire: {temperatureShireCelsius}°C |{" "}
-                                {temperatureShireFahrenheit}°F</a>
+                    <label>
+                        <a style={{ color: "white" }}>
+                            The Shire: {temperatureShireCelsius}°C |{" "}
+                            {temperatureShireFahrenheit}°F -- {conditionShire}
+                        </a>
                     </label>
                     <br />
-                    <label onClick={()=>weatherDetailsMordor()}>
-                            <a style={{color: "white"}}>Mordor: {temperatureMordorCelsius}°C |{" "}
-                                {temperatureMordorFahrenheit}°F</a>
-
+                    <label>
+                        <a style={{ color: "white" }}>
+                            Mordor: {temperatureMordorCelsius}°C |{" "}
+                            {temperatureMordorFahrenheit}°F -- {conditionMordor}
+                        </a>
+                    </label>
+                    <br />
+                    <label>
+                        <a style={{ color: "white" }}>
+                            Rohan: {temperatureRohanCelsius}°C |{" "}
+                            {temperatureRohanFahrenheit}°F -- {conditionRohan}
+                        </a>
+                    </label>
+                    <br />
+                    <label>
+                        <a style={{ color: "white" }}>
+                            Gondor: {temperatureGondorCelsius}°C |{" "}
+                            {temperatureGondorFahrenheit}°F -- {conditionGondor}
+                        </a>
                     </label>
                 </div>
             </div>
