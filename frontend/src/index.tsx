@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./css/index.sss";
+import "./css/index.css";
 import App from "./App";
 import { Toaster } from "react-hot-toast";
 
