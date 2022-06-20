@@ -84,6 +84,14 @@ function Map() {
         setDwarfRoute(!dwarfRoute);
     }
 
+    function weatherDetailsMordor(){
+        const map = useMapEvent("zoom", () => {
+            map.setZoom(3);
+            map.setZoomAround([30, 52], 3);
+        });
+        return null;
+    }
+
     return (
         <div style={{ textAlign: "center" }}>
             <p>Paths of:</p>
@@ -134,18 +142,15 @@ function Map() {
                     <TileLayer noWrap={true} url="/tiles/{z}/{x}/{y}.jpg" />
                 </MapContainer>
                 <div className={"weatherDiv"}>
-                    <label>
-                        <a href={""}>
-                            The Shire: {temperatureShireCelsius}°C |{" "}
-                            {temperatureShireFahrenheit}°F
-                        </a>
+                    <label onClick={()=>weatherDetailsMordor()}>
+                            <a style={{color: "white"}}>The Shire: {temperatureShireCelsius}°C |{" "}
+                                {temperatureShireFahrenheit}°F</a>
                     </label>
                     <br />
-                    <label>
-                        <a href={""}>
-                            Mordor: {temperatureMordorCelsius}°C |{" "}
-                            {temperatureMordorFahrenheit}°F
-                        </a>
+                    <label onClick={()=>weatherDetailsMordor()}>
+                            <a style={{color: "white"}}>Mordor: {temperatureMordorCelsius}°C |{" "}
+                                {temperatureMordorFahrenheit}°F</a>
+
                     </label>
                 </div>
             </div>
