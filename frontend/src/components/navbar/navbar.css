@@ -85,7 +85,7 @@ a:hover {
 }
 
 /* This is how u do responsive css, use media queries */
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1200px) {
     .content {
         background-color: var(--blue);
         display: none;
